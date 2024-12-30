@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --main-purple: #635FC7;
+    --main-purple-hover: #A8A4FF;
+    --light-grey: #F4F7FD;
+    --medium-grey: #828FA3;
+    --dark-grey: #2B2C37;
+    --very-dark-grey: #20212C;
+    --light-lines: #E4EBFA;
+    --dark-lines: #3E3F4E;
+    --red: #EA5555;
+    --red-hover: #FF9898;
+}
