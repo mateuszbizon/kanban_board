@@ -17,6 +17,28 @@ export default {
         "dark-lines": "var(--dark-lines)",
         "red": "var(--red)",
         "red-hover": "var(--red-hover)",
+      },
+      fontSize: {
+        'xs': ['0.75rem', {
+          fontWeight: '700',
+          lineHeight: "0.9375rem"
+        }],
+        '2xs': ['0.8125rem', {
+          fontWeight: '500',
+          lineHeight: "1.4375rem"
+        }],
+        '2sm': ['0.9375rem', {
+          fontWeight: '700',
+          lineHeight: "1.1875rem"
+        }],
+        'lg': ['1.125rem', {
+          fontWeight: '700',
+          lineHeight: "1.4375rem"
+        }],
+        '2xl': ['1.5rem', {
+          fontWeight: '700',
+          lineHeight: "1.875rem"
+        }],
       }
     },
   },

@@ -14,3 +14,7 @@
     --red: #EA5555;
     --red-hover: #FF9898;
 }
+
+html {
+    font-family: "Plus Jakarta Sans", serif;
+}
