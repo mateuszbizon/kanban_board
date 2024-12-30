@@ -18,3 +18,9 @@
 html {
     font-family: "Plus Jakarta Sans", serif;
 }
+
+@layer base {
+    body {
+        @apply bg-light-grey
+    }
+}
