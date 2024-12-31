@@ -11,6 +11,7 @@ const buttonVariants = cva(
         default: "bg-main-purple text-white hover:bg-main-purple-hover",
         secondary: "bg-[#635FC7]/10 text-main-purple hover:bg-[#635FC7]/25",
         delete: "bg-red text-white hover:bg-red-hover",
+        transparent: "bg-transparent",
       },
       size: {
         default: "text-2xs py-2 px-4 font-bold",

@@ -1,3 +1,5 @@
+import Topbar from "@/components/home/Topbar"
+
 function HomePage() {
   return (
     <div>
@@ -11,9 +13,7 @@ function HomePage() {
                 </div>
             </aside>
             <main className="grow">
-                <div className="sticky top-0 bg-white">
-                    <p>topbar</p>
-                </div>
+                <Topbar />
                 <div>
                     main content
                 </div>

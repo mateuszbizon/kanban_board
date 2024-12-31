@@ -39,6 +39,12 @@ export default {
           fontWeight: '700',
           lineHeight: "1.875rem"
         }],
+      },
+      height: {
+        "topbar": "5rem",
+      },
+      padding: {
+        "main": "1rem"
       }
     },
   },
