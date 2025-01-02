@@ -2,6 +2,7 @@ import BoardIcon from "../icons/BoardIcon"
 import LogoDarkIcon from "../icons/LogoDarkIcon"
 import LogoLightIcon from "../icons/LogoLightIcon"
 import { Button } from "../ui/button"
+import DarkModeBox from "./DarkModeBox"
 
 function Sidebar() {
   return (
@@ -33,7 +34,7 @@ function Sidebar() {
             </div>
 
             <div className="mt-auto">
-                
+                <DarkModeBox />
             </div>
         </div>
     </aside>
