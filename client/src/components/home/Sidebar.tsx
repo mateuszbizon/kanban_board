@@ -1,4 +1,3 @@
-import { useState } from "react"
 import BoardIcon from "../icons/BoardIcon"
 import LogoDarkIcon from "../icons/LogoDarkIcon"
 import LogoLightIcon from "../icons/LogoLightIcon"
@@ -6,17 +5,10 @@ import { Button } from "../ui/button"
 import DarkModeBox from "./DarkModeBox"
 import HideIcon from "../icons/HideIcon"
 import ShowIcon from "../icons/ShowIcon"
+import useSidebar from "@/hooks/useSidebar"
 
 function Sidebar() {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true)
-
-    function hideSidebar() {
-        setIsSidebarOpen(false)
-    }
-
-    function showSidebar() {
-        setIsSidebarOpen(true)
-    }
+    const { isSidebarOpen, hideSidebar, showSidebar } = useSidebar()
 
   return (
     <aside className="hidden md:block">
