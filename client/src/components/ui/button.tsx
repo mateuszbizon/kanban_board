@@ -19,6 +19,7 @@ const buttonVariants = cva(
         default: "text-2xs py-2 px-4 font-bold",
         lg: "text-2sm py-3 px-6",
         sidebar: "text-2sm py-4 px-main",
+        icon: "p-4"
       },
     },
     defaultVariants: {
