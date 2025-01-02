@@ -12,10 +12,13 @@ const buttonVariants = cva(
         secondary: "bg-[#635FC7]/10 text-main-purple hover:bg-[#635FC7]/25",
         delete: "bg-red text-white hover:bg-red-hover",
         transparent: "bg-transparent",
+        sidebar: "text-medium-grey bg-white hover:bg-light-lines hover:text-main-purple rounded-r-3xl rounded-l-none justify-start",
+        "sidebar-active": "text-white bg-main-purple rounded-r-3xl rounded-l-none justify-start"
       },
       size: {
         default: "text-2xs py-2 px-4 font-bold",
         lg: "text-2sm py-3 px-6",
+        sidebar: "text-2sm py-4 px-main",
       },
     },
     defaultVariants: {
