@@ -1,6 +1,4 @@
 import BoardIcon from "../icons/BoardIcon"
-import LogoDarkIcon from "../icons/LogoDarkIcon"
-import LogoLightIcon from "../icons/LogoLightIcon"
 import { Button } from "../ui/button"
 import DarkModeBox from "./DarkModeBox"
 import HideIcon from "../icons/HideIcon"
@@ -12,10 +10,7 @@ function Sidebar() {
 
   return (
     <aside className="hidden md:block">
-        <div className="sticky top-0 flex items-center bg-white h-topbar p-main border-r border-r-light-lines">
-            <LogoDarkIcon />
-        </div>
-        <div className={`sticky top-[calc(theme(height.topbar))] flex flex-col bg-white border-r border-r-light-lines py-main overflow-hidden ${!isSidebarOpen ? "w-0 h-0" : "w-[260px] lg:w-[300px] h-[calc(100vh-theme(height.topbar))]"}`}>
+        <div className={`sticky top-[calc(theme(height.topbar))] h-[calc(100vh-theme(height.topbar))] flex flex-col bg-white border-r border-r-light-lines py-main overflow-hidden ${!isSidebarOpen ? "w-0" : "w-[260px] lg:w-[300px]"}`}>
             <div className="px-main pb-main">
                 <span className="text-medium-grey text-xs uppercase tracking-[0.25em]">all boards (3)</span>
             </div>

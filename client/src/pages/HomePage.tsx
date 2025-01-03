@@ -4,10 +4,10 @@ import Topbar from "@/components/home/Topbar"
 function HomePage() {
   return (
     <div>
+        <Topbar />
         <div className="flex">
             <Sidebar />
             <main className="grow">
-                <Topbar />
                 <div>
                     main content
                 </div>
