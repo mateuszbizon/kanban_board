@@ -1,20 +1,23 @@
-import { useState } from 'react'
+import { RootState } from '@/store'
+import { hideSidebar, showSidebar } from '@/store/slices/sidebarSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 function useSidebar() {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+    const { isOpen } = useSelector((state: RootState) => state.sidebar)
+    const dispatch = useDispatch()
 
-    function hideSidebar() {
-        setIsSidebarOpen(false)
+    function handleHideSidebar() {
+        dispatch(hideSidebar())
     }
 
-    function showSidebar() {
-        setIsSidebarOpen(true)
+    function handleShowSidebar() {
+        dispatch(showSidebar())
     }
 
   return {
-    isSidebarOpen,
-    hideSidebar,
-    showSidebar,
+    isSidebarOpen: isOpen,
+    hideSidebar: handleHideSidebar,
+    showSidebar: handleShowSidebar,
   }
 }
 
