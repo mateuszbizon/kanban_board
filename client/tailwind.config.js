@@ -45,7 +45,10 @@ export default {
       },
       padding: {
         "main": "1rem"
-      }
+      },
+      boxShadow: {
+        "main": "0px 4px 6px 0px rgba(54, 78, 126, 0.115)",
+      },
     },
   },
   plugins: [],
