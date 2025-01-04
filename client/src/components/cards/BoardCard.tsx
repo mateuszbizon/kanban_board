@@ -12,7 +12,7 @@ type BoardCardProps = {
 function BoardCard({ board }: BoardCardProps) {
     const { currentBoard } = useSelector((state: RootState) => state.board)
     const dispatch = useDispatch()
-    const isBoardActive = board.id === currentBoard.id
+    const isBoardActive = board.id === currentBoard?.id
 
     function handleSetCurrentBoard() {
         dispatch(setCurrentBoard(board))

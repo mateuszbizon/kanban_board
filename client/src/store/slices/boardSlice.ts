@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type BoardState = {
     boards: Board[];
-    currentBoard: Board;
+    currentBoard: Board | null;
 }
 
 const initialState: BoardState = {

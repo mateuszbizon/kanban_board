@@ -1,16 +1,27 @@
+import CurrentBoard from "@/components/board/CurrentBoard"
+import NoBoards from "@/components/board/NoBoards"
 import Sidebar from "@/components/home/Sidebar"
 import Topbar from "@/components/home/Topbar"
+import { RootState } from "@/store"
+import { useSelector } from "react-redux"
 
 function HomePage() {
+  const { currentBoard } = useSelector((state: RootState) => state.board)
+
   return (
     <div>
         <Topbar />
         <div className="flex">
             <Sidebar />
-            <main className="grow">
-                <div>
-                    main content
-                </div>
+            <main className="grow min-h-[calc(100vh-theme(height.topbar))] p-main overflow-x-auto">
+                {currentBoard && (
+                    <CurrentBoard board={currentBoard} />
+                )}
+                {!currentBoard && (
+                    <div className="flex flex-col justify-center items-center h-full">
+                      <NoBoards />
+                    </div>
+                )}
             </main>
         </div>
     </div>
