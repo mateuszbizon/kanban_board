@@ -8,10 +8,13 @@ import { RootState } from "@/store"
 import { useSelector } from "react-redux"
 import BoardsList from "../lists/BoardsList"
 import BoardCard from "../cards/BoardCard"
+import { useState } from "react"
+import Modal from "../common/Modal"
 
 function Sidebar() {
     const { boards } = useSelector((state: RootState) => state.board)
     const { isSidebarOpen, hideSidebar, showSidebar } = useSidebar()
+    const [isBoardModalOpen, setIsBoardModalOpen] = useState(false)
 
   return (
     <aside className="hidden md:block">
@@ -28,10 +31,20 @@ function Sidebar() {
                     )}
                 />
                 <div className="pr-main">
-                    <Button variant={"sidebar"} size={"sidebar"} className="w-full text-main-purple">
+                    <Button 
+                        variant={"sidebar"} 
+                        size={"sidebar"} 
+                        className="w-full text-main-purple" 
+                        onClick={() => setIsBoardModalOpen(true)}
+                    >
                         <BoardIcon /> + Create Board
                     </Button>
                 </div>
+                <Modal isOpen={isBoardModalOpen} onClose={() => setIsBoardModalOpen(false)} isModalDelete={false}>
+                    <div>
+                        Board form
+                    </div>
+                </Modal>
             </div>
 
             <div className="mt-auto">
