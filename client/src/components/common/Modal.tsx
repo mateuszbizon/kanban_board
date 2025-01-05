@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { Button } from "../ui/button";
+import useModal from "@/hooks/useModal";
 
 type ModalProps = {
   isOpen: boolean;
@@ -15,53 +16,7 @@ type ModalProps = {
 
 function Modal({ isOpen, onClose, children, isModalDelete, onDelete }: ModalProps) {
     const modalRef = useRef<HTMLDialogElement | null>(null)
-
-    function openModal() {
-      modalRef.current?.showModal()
-    }
-
-    function closeModal() {
-      modalRef.current?.close()
-      onClose()
-    }
-
-    function handleDelete() {
-      if (onDelete) {
-        onDelete()
-      }
-    }
-
-    useEffect(() => {
-      if (isOpen && !modalRef.current?.open) {
-        openModal()
-        return
-      }
-
-      closeModal()
-    }, [isOpen])
-
-    useEffect(() => {
-      const closeModalOutside = (e: MouseEvent) => {
-        const modalDimensions = modalRef.current?.getBoundingClientRect()
-
-        if (!modalDimensions) return
-
-        if (
-          e.clientX < modalDimensions.left || 
-          e.clientX > modalDimensions.right ||
-          e.clientY < modalDimensions.top || 
-          e.clientY > modalDimensions.bottom
-        ) {
-          closeModal()
-        }
-      }
-
-      modalRef.current?.addEventListener('click', closeModalOutside)
-
-      return () => {
-        modalRef.current?.removeEventListener('click', closeModalOutside)
-      }
-    }, [])
+    const { closeModal, handleDelete } = useModal({ isOpen, onClose, onDelete, modalRef })
 
   return (
     <dialog ref={modalRef} className="p-main bg-white rounded-lg w-[315px] md:w-[480px] max-h-[calc(100vh-200px)] overflow-y-auto backdrop:bg-black/50">
