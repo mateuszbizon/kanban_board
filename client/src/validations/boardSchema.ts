@@ -7,3 +7,5 @@ export const boardSchema = z.object({
         name: z.string().min(1, MINIMUM_LENGTH).max(20, COLUMN_MAX_LENGTH)
     }))
 })
+
+export type BoardSchema = z.infer<typeof boardSchema>

@@ -10,6 +10,7 @@ import BoardsList from "../lists/BoardsList"
 import BoardCard from "../cards/BoardCard"
 import { useState } from "react"
 import Modal from "../common/Modal"
+import BoardForm from "../forms/BoardForm"
 
 function Sidebar() {
     const { boards } = useSelector((state: RootState) => state.board)
@@ -41,9 +42,7 @@ function Sidebar() {
                     </Button>
                 </div>
                 <Modal isOpen={isBoardModalOpen} onClose={() => setIsBoardModalOpen(false)} isModalDelete={false}>
-                    <div>
-                        Board form
-                    </div>
+                    <BoardForm />
                 </Modal>
             </div>
 
