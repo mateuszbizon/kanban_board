@@ -3,15 +3,20 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Board } from "@/types"
+import { Board, Task } from "@/types"
 import { Button } from "../ui/button"
 import CrossIcon from "../icons/CrossIcon"
+import { generateId } from "@/lib/generateId"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/store"
+import { addBoard } from "@/store/slices/boardSlice"
 
 type BoardFormProps = {
     board?: Board;
 }
 
 function BoardForm({ board }: BoardFormProps) {
+    const dispatch = useDispatch<AppDispatch>()
     const { handleSubmit, register, formState: { errors }, control, reset } = useForm<BoardSchema>({
         resolver: zodResolver(boardSchema),
         defaultValues: {
@@ -34,11 +39,20 @@ function BoardForm({ board }: BoardFormProps) {
     }
 
     function onSubmit(data: BoardSchema) {
-        console.log(data)
+        if (board) {
+            console.log('board edited')
+            return
+        }
+
+        const columns = data.columns.map((column, index) => {
+            return { ...column, id: generateId() + index, tasks: [] as Task[] }
+        })
+
+        dispatch(addBoard({ id: generateId(), name: data.name, columns: columns }))
     }
 
   return (
-    <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+    <form method="dialog" className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-lg text-black">Add New Board</h2>
         <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
