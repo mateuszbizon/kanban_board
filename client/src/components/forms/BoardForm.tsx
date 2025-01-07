@@ -5,6 +5,7 @@ import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Board } from "@/types"
 import { Button } from "../ui/button"
+import CrossIcon from "../icons/CrossIcon"
 
 type BoardFormProps = {
     board?: Board;
@@ -28,6 +29,10 @@ function BoardForm({ board }: BoardFormProps) {
         append({ name: "" })
     }
 
+    function removeColumn(fieldIndex: number) {
+        remove(fieldIndex)
+    }
+
     function onSubmit(data: BoardSchema) {
         console.log(data)
     }
@@ -43,8 +48,17 @@ function BoardForm({ board }: BoardFormProps) {
             <Label>Columns</Label>
             {fields.map((item, index) => {
                 return (
-                    <div key={item.id}>
+                    <div key={item.id} className="flex items-center gap-1">
                         <Input {...register(`columns.${index}.name`)} placeholder="e.g. Todo" />
+                        <Button 
+                            type="button" 
+                            variant={"transparent"} 
+                            size={"icon"} 
+                            className="text-medium-grey hover:text-red" 
+                            onClick={() => removeColumn(index)}
+                        >
+                            <CrossIcon />
+                        </Button>
                     </div>
                 )
             })}
