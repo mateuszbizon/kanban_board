@@ -52,7 +52,7 @@ function BoardForm({ board }: BoardFormProps) {
     }
 
   return (
-    <form method="dialog" className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+    <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-lg text-black">Add New Board</h2>
         <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
