@@ -3,9 +3,9 @@ import AddIcon from "../icons/AddIcon"
 import ChevronDownIcon from "../icons/ChevronDownIcon"
 import LogoDarkIcon from "../icons/LogoDarkIcon"
 import LogoIcon from "../icons/LogoIcon"
-import VerticalElipsisIcon from "../icons/VerticalElipsisIcon"
 import { Button } from "../ui/button"
 import { RootState } from "@/store"
+import BoardOptions from "../board/BoardOptions"
 
 function Topbar() {
     const { isOpen: isSidebarOpen } = useSelector((state: RootState) => state.sidebar)
@@ -34,9 +34,7 @@ function Topbar() {
                     </div>
                     <span className="hidden md:block">+ Add New Task</span>
                 </Button>
-                <Button variant={"transparent"} className="pr-0">
-                    <VerticalElipsisIcon />
-                </Button>
+                <BoardOptions />
             </div>
         </div>
     </div>
