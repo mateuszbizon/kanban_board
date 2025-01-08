@@ -9,15 +9,16 @@ import CrossIcon from "../icons/CrossIcon"
 import { generateId } from "@/lib/generateId"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/store"
-import { addBoard } from "@/store/slices/boardSlice"
+import { addBoard, editBoard } from "@/store/slices/boardSlice"
+import { useEffect } from "react"
 
 type BoardFormProps = {
-    board?: Board;
+    board?: Board | null;
 }
 
 function BoardForm({ board }: BoardFormProps) {
     const dispatch = useDispatch<AppDispatch>()
-    const { handleSubmit, register, formState: { errors }, control, reset } = useForm<BoardSchema>({
+    const { handleSubmit, register, formState: { errors }, control, reset, setValue } = useForm<BoardSchema>({
         resolver: zodResolver(boardSchema),
         defaultValues: {
             name: board ? board.name : "",
@@ -39,17 +40,25 @@ function BoardForm({ board }: BoardFormProps) {
     }
 
     function onSubmit(data: BoardSchema) {
-        if (board) {
-            console.log('board edited')
-            return
-        }
-
         const columns = data.columns.map((column, index) => {
             return { ...column, id: generateId() + index, tasks: [] as Task[] }
         })
 
+        if (board) {
+            dispatch(editBoard({ id: board.id, name: data.name, columns: columns }))    
+            return
+        }
+
+        reset()
         dispatch(addBoard({ id: generateId(), name: data.name, columns: columns }))
     }
+
+    useEffect(() => {
+        if (board) {
+            setValue("name", board.name)
+            setValue("columns", board.columns)
+        }
+    }, [board])
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>

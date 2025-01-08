@@ -23,8 +23,18 @@ const boardSlice = createSlice({
             state.boards = [...state.boards, action.payload]
             state.currentBoard = action.payload
         },
+        editBoard: (state, action: PayloadAction<Board>) => {
+            state.boards = state.boards.map(board => {
+                if (board.id === action.payload.id) {
+                    return action.payload
+                }
+
+                return board
+            })
+            state.currentBoard = action.payload
+        }
     }
 })
 
-export const { setCurrentBoard, addBoard } = boardSlice.actions
+export const { setCurrentBoard, addBoard, editBoard } = boardSlice.actions
 export default boardSlice.reducer
