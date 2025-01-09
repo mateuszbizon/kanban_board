@@ -26,9 +26,12 @@ function Modal({ isOpen, onClose, children, isModalDelete, onDelete }: ModalProp
         </div>
       )}
       {isModalDelete && (
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 mt-5">
-          <Button variant={"delete"} onClick={handleDelete}>Delete</Button>
-          <Button variant={"secondary"} onClick={closeModal}>Cancel</Button>
+        <div>
+            {children}
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 mt-5">
+                <Button variant={"delete"} onClick={handleDelete}>Delete</Button>
+                <Button variant={"secondary"} onClick={closeModal}>Cancel</Button>
+            </div>
         </div>
       )}
     </dialog>

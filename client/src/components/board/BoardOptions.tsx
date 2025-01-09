@@ -3,15 +3,13 @@ import { useRef, useState } from 'react'
 import { Button } from '../ui/button'
 import VerticalElipsisIcon from '../icons/VerticalElipsisIcon'
 import Popover from '../common/Popover'
-import Modal from '../common/Modal'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
-import BoardForm from '../forms/BoardForm'
+import EditBoard from './EditBoard'
+import DeleteBoard from './DeleteBoard'
 
 function BoardOptions() {
-    const { currentBoard } = useSelector((state: RootState) => state.board)
     const [isBoardPopoverOpen, setIsBoardPopoverOpen] = useState(false)
     const [isEditBoardOpen, setIsEditBoardOpen] = useState(false)
+    const [isDeleteBoardOpen, setIsDeleteBoardOpen] = useState(false)
     const boardPopoverRef = useRef<HTMLDivElement | null>(null)
 
     useClickOutside(boardPopoverRef, isBoardPopoverOpen, () => setIsBoardPopoverOpen(false))
@@ -23,6 +21,7 @@ function BoardOptions() {
 
     function showDeleteBoard() {
         setIsBoardPopoverOpen(false)
+        setIsDeleteBoardOpen(true)
     }
 
   return (
@@ -40,9 +39,8 @@ function BoardOptions() {
                 <Button variant={"transparent"} className="p-0 text-red" onClick={showDeleteBoard}>Delete Board</Button>
             </div>
         </Popover>
-        <Modal isOpen={isEditBoardOpen} onClose={() => setIsEditBoardOpen(false)} isModalDelete={false}>
-            <BoardForm board={currentBoard} />
-        </Modal>
+        <EditBoard isEditBoardOpen={isEditBoardOpen} setIsEditBoardOpen={setIsEditBoardOpen} />
+        <DeleteBoard isDeleteBoardOpen={isDeleteBoardOpen} setIsDeleteBoardOpen={setIsDeleteBoardOpen} />
     </div>
   )
 }
