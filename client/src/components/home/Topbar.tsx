@@ -22,10 +22,10 @@ function Topbar() {
                     <LogoIcon />
                 </div>
                 <Button variant={"transparent"} className="text-black text-lg p-0 md:hidden">
-                    Platform Launch
+                    {currentBoard?.name}
                     <ChevronDownIcon />
                 </Button>
-                <span className="text-black text-lg hidden md:block">Platform Launch</span>
+                <span className="text-black text-lg hidden md:block">{currentBoard?.name}</span>
             </div>
 
             <div className="flex items-center">
