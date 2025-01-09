@@ -9,6 +9,7 @@ import BoardOptions from "../board/BoardOptions"
 
 function Topbar() {
     const { isOpen: isSidebarOpen } = useSelector((state: RootState) => state.sidebar)
+    const { boards, currentBoard } = useSelector((state: RootState) => state.board)
 
   return (
     <div className="flex sticky top-0">
@@ -28,7 +29,7 @@ function Topbar() {
             </div>
 
             <div className="flex items-center">
-                <Button disabled>
+                <Button disabled={!currentBoard?.columns.length || !boards.length}>
                     <div className="md:hidden">
                         <AddIcon />
                     </div>
