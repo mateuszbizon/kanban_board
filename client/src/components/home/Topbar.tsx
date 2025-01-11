@@ -6,10 +6,14 @@ import LogoIcon from "../icons/LogoIcon"
 import { Button } from "../ui/button"
 import { RootState } from "@/store"
 import BoardOptions from "../board/BoardOptions"
+import Modal from "../common/Modal"
+import TaskForm from "../forms/TaskForm"
+import { useState } from "react"
 
 function Topbar() {
     const { isOpen: isSidebarOpen } = useSelector((state: RootState) => state.sidebar)
     const { boards, currentBoard } = useSelector((state: RootState) => state.board)
+    const [isNewTaskOpen, setIsNewTaskOpen] = useState(false)
 
   return (
     <div className="flex sticky top-0">
@@ -29,12 +33,15 @@ function Topbar() {
             </div>
 
             <div className="flex items-center">
-                <Button disabled={!currentBoard?.columns.length || !boards.length}>
+                <Button onClick={() => setIsNewTaskOpen(true)} disabled={!currentBoard?.columns.length || !boards.length}>
                     <div className="md:hidden">
                         <AddIcon />
                     </div>
                     <span className="hidden md:block">+ Add New Task</span>
                 </Button>
+                <Modal isOpen={isNewTaskOpen} onClose={() => setIsNewTaskOpen(false)} isModalDelete={false}>
+                    <TaskForm />
+                </Modal>
                 <BoardOptions />
             </div>
         </div>

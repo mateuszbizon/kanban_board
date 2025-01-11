@@ -41,7 +41,8 @@ function SelectDropdown({ value, onChangeValue, children }: SelectDropdownProps)
   return (
     <SelectDropdownContext.Provider value={{ selectedValue: value, onChangeValue, isOpen: isSelectOpen, onClose: closeSelect }}>
         <div ref={selectRef} className='relative'>
-            <Button 
+            <Button
+                type='button' 
                 variant={"transparent"} 
                 className={`w-full justify-between p-main text-black border rounded ${isSelectOpen ? "border-main-purple" : "border-medium-grey"}`} 
                 onClick={() => setIsSelectOpen(prev => !prev)}
