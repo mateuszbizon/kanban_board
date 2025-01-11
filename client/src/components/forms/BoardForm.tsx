@@ -3,7 +3,7 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Board, Task } from "@/types"
+import { Board, Column } from "@/types"
 import { Button } from "../ui/button"
 import CrossIcon from "../icons/CrossIcon"
 import { generateId } from "@/lib/generateId"
@@ -32,7 +32,7 @@ function BoardForm({ board }: BoardFormProps) {
     })
 
     function addColumn() {
-        append({ name: "" })
+        append({ name: "", tasks: [] })
     }
 
     function removeColumn(fieldIndex: number) {
@@ -41,16 +41,16 @@ function BoardForm({ board }: BoardFormProps) {
 
     function onSubmit(data: BoardSchema) {
         const columns = data.columns.map((column, index) => {
-            return { ...column, id: generateId() + index, tasks: [] as Task[] }
+            return { ...column, id: generateId() + index }
         })
 
         if (board) {
-            dispatch(editBoard({ id: board.id, name: data.name, columns: columns }))    
+            dispatch(editBoard({ id: board.id, name: data.name, columns: columns as Column[] }))    
             return
         }
 
         reset()
-        dispatch(addBoard({ id: generateId(), name: data.name, columns: columns }))
+        dispatch(addBoard({ id: generateId(), name: data.name, columns: columns as Column[] }))
     }
 
     useEffect(() => {
