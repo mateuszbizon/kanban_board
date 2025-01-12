@@ -2,8 +2,8 @@ import { Task } from '@/types'
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@/store';
 import { useState } from 'react';
 import SelectDropdown from '../common/SelectDropdown';
 import { Button } from '../ui/button';
@@ -11,12 +11,15 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { taskSchema, TaskSchema } from '@/validations/taskSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CrossIcon from '../icons/CrossIcon';
+import { generateId } from '@/lib/generateId';
+import { handleAddTask } from '@/store/actions/tasks';
 
 type TaskFormProps = {
     task?: Task;
 }
 
 function TaskForm({ task }: TaskFormProps) {
+    const dispatch = useDispatch<AppDispatch>()
     const { currentBoard } = useSelector((state: RootState) => state.board)
     const [status, setStatus] = useState(task ? task.status : currentBoard?.columns[0].name!)
     const { handleSubmit, register, control, reset, setValue } = useForm<TaskSchema>({
@@ -48,12 +51,30 @@ function TaskForm({ task }: TaskFormProps) {
     }
 
     function onSubmit(data: TaskSchema) {
-        console.log(data)
+        if (task) {
+            console.log("Task to edit")
+            return
+        }
+
+        const subtasks = data.subtasks.map((subtask, index) => {
+            return { ...subtask, id: generateId() + index }
+        })
+
+        const newTask: Task = { 
+            id: generateId(), 
+            title: data.title, 
+            description: data.description, 
+            status: data.status, 
+            subtasks 
+        }
+
+        dispatch(handleAddTask(currentBoard!, newTask))
+        reset()
     }
 
   return (
     <form className='space-y-5' onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='text-lg text-black'>{task ? "Add New Task" : "Edit Task"}</h2>
+        <h2 className='text-lg text-black'>{task ? "Edit Task" : "Add New Task"}</h2>
         <div className='space-y-2'>
             <Label htmlFor='title'>Title</Label>
             <Input id='title' {...register("title")} placeholder='e.g. Take coffee break' />

@@ -36,9 +36,20 @@ const boardSlice = createSlice({
         deleteBoard: (state, action: PayloadAction<{boardId: string}>) => {
             state.boards = state.boards.filter(board => board.id !== action.payload.boardId)
             state.currentBoard = state.boards[0]
-        }
+        },
+        updateCurrentBoard: (state, action: PayloadAction<Board>) => {
+            state.boards = state.boards.map(board => {
+                if (board.id === action.payload.id) {
+                    return action.payload
+                }
+
+                return board
+            })
+
+            state.currentBoard = action.payload
+        },
     }
 })
 
-export const { setCurrentBoard, addBoard, editBoard, deleteBoard } = boardSlice.actions
+export const { setCurrentBoard, addBoard, editBoard, deleteBoard, updateCurrentBoard } = boardSlice.actions
 export default boardSlice.reducer
