@@ -11,7 +11,7 @@
             {
               "id": "1",
               "title": "Build UI for onboarding flow",
-              "description": "",
+              "description": "Description",
               "status": "Todo",
               "subtasks": [
                 {
@@ -34,7 +34,7 @@
             {
               "id": "2",
               "title": "Build UI for search",
-              "description": "",
+              "description": "Description",
               "status": "Todo",
               "subtasks": [
                 {
@@ -47,7 +47,7 @@
             {
               "id": "3",
               "title": "Build settings UI",
-              "description": "",
+              "description": "Description",
               "status": "Todo",
               "subtasks": [
                 {
@@ -89,7 +89,7 @@
             {
               "id": "5",
               "title": "Design settings and search pages",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -112,7 +112,7 @@
             {
               "id": "6",
               "title": "Add account management endpoints",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -135,7 +135,7 @@
             {
               "id": "7",
               "title": "Design onboarding flow",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -158,7 +158,7 @@
             {
               "id": "8",
               "title": "Add search enpoints",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -176,7 +176,7 @@
             {
               "id": "9",
               "title": "Add authentication endpoints",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -284,7 +284,7 @@
             {
               "id": "1-1",
               "title": "Build UI for onboarding flow",
-              "description": "",
+              "description": "Description",
               "status": "Todo",
               "subtasks": [
                 {
@@ -307,7 +307,7 @@
             {
               "id": "2-1",
               "title": "Build UI for search",
-              "description": "",
+              "description": "Description",
               "status": "Todo",
               "subtasks": [
                 {
@@ -320,7 +320,7 @@
             {
               "id": "3-1",
               "title": "Build settings UI",
-              "description": "",
+              "description": "Description",
               "status": "Todo",
               "subtasks": [
                 {
@@ -362,7 +362,7 @@
             {
               "id": "5-1",
               "title": "Design settings and search pages",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -385,7 +385,7 @@
             {
               "id": "6-1",
               "title": "Add account management endpoints",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -408,7 +408,7 @@
             {
               "id": "7-1",
               "title": "Design onboarding flow",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -431,7 +431,7 @@
             {
               "id": "8-1",
               "title": "Add search enpoints",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
@@ -449,7 +449,7 @@
             {
               "id": "9-1",
               "title": "Add authentication endpoints",
-              "description": "",
+              "description": "Description",
               "status": "Doing",
               "subtasks": [
                 {
