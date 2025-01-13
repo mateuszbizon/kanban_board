@@ -5,6 +5,8 @@ import { getSubtasksCompletedLength } from '@/lib/getSubtasksCompletedLength';
 import { useRef, useState } from 'react';
 import Popover from '../common/Popover';
 import useClickOutside from '@/hooks/useClickOutside';
+import SubtasksList from '../lists/SubtasksList';
+import SubtaskCheckbox from './SubtaskCheckbox';
 
 type CurrentTaskProps = {
     task: Task;
@@ -56,6 +58,12 @@ function CurrentTask({ onClose, task }: CurrentTaskProps) {
         <p className='text-2xs text-medium-grey'>{task.description}</p>
         <div className='space-y-3'>
             <span className='text-xs text-medium-grey'>Subtasks ({getSubtasksCompletedLength(task.subtasks)} of {task.subtasks.length})</span>
+            {<SubtasksList
+                subtasks={task.subtasks}
+                renderItem={(subtask) => (
+                    <SubtaskCheckbox key={subtask.id} subtask={subtask} />
+                )}
+            />}
         </div>
     </div>
   )

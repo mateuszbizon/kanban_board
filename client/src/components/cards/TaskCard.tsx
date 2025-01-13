@@ -1,7 +1,7 @@
 import { getSubtasksCompletedLength } from '@/lib/getSubtasksCompletedLength';
 import { Task } from '@/types';
 import Modal from '../common/Modal';
-import CurrentTask from '../task/currentTask';
+import CurrentTask from '../task/CurrentTask';
 import { useState } from 'react';
 
 type TaskCardProps = {
