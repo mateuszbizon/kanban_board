@@ -1,16 +1,26 @@
 import { useState } from 'react'
 import { Checkbox } from '../ui/checkbox'
 import { SubTask } from '@/types'
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '@/store';
+import { handleEditSubtask } from '@/store/actions/tasks';
 
 type SubtaskCheckboxProps = {
-    subtask: SubTask
+    subtask: SubTask;
+    columnId: string
 }
 
-function SubtaskCheckbox({ subtask }: SubtaskCheckboxProps) {
+function SubtaskCheckbox({ subtask, columnId }: SubtaskCheckboxProps) {
+    const { currentBoard } = useSelector((state: RootState) => state.board)
+    const dispatch = useDispatch<AppDispatch>()
     const [isCompleted, setIsCompleted] = useState(subtask.isCompleted)
 
     function toggleSubtask() {
         setIsCompleted(prev => !prev)
+
+        if (!currentBoard) return
+
+        dispatch(handleEditSubtask(currentBoard, columnId, subtask))
     }
 
   return (
@@ -19,7 +29,7 @@ function SubtaskCheckbox({ subtask }: SubtaskCheckboxProps) {
         onClick={toggleSubtask}
     >
         <Checkbox id={subtask.id} checked={isCompleted}/>
-        <label htmlFor={subtask.id}>{subtask.title}</label>
+        <label>{subtask.title}</label>
     </div>
   )
 }

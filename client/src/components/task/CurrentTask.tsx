@@ -61,7 +61,7 @@ function CurrentTask({ onClose, task }: CurrentTaskProps) {
             {<SubtasksList
                 subtasks={task.subtasks}
                 renderItem={(subtask) => (
-                    <SubtaskCheckbox key={subtask.id} subtask={subtask} />
+                    <SubtaskCheckbox key={subtask.id} subtask={subtask} columnId={task.columnId} />
                 )}
             />}
         </div>
