@@ -39,9 +39,11 @@ function Topbar() {
                     </div>
                     <span className="hidden md:block">+ Add New Task</span>
                 </Button>
-                <Modal isOpen={isNewTaskOpen} onClose={() => setIsNewTaskOpen(false)} isModalDelete={false}>
-                    <TaskForm />
-                </Modal>
+                {currentBoard && currentBoard.columns.length > 0 && (
+                    <Modal isOpen={isNewTaskOpen} onClose={() => setIsNewTaskOpen(false)} isModalDelete={false}>
+                        <TaskForm />
+                    </Modal>
+                )}
                 <BoardOptions />
             </div>
         </div>
