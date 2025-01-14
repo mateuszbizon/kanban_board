@@ -8,6 +8,7 @@ import useClickOutside from '@/hooks/useClickOutside';
 import SubtasksList from '../lists/SubtasksList';
 import SubtaskCheckbox from './SubtaskCheckbox';
 import DeleteTask from './DeleteTask';
+import EditTask from './EditTask';
 
 type CurrentTaskProps = {
     task: Task;
@@ -61,6 +62,7 @@ function CurrentTask({ onClose, task }: CurrentTaskProps) {
             </div>
         </div>
         <DeleteTask isDeleteTaskOpen={isDeleteTaskOpen} setIsDeleteTaskOpen={setIsDeleteTaskOpen} task={task} onClose={onClose} />
+        <EditTask isEditTaskOpen={isEditTaskOpen} setIsEditTaskOpen={setIsEditTaskOpen} task={task} />
     </>
   )
 }

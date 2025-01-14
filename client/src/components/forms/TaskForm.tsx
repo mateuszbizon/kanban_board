@@ -58,7 +58,7 @@ function TaskForm({ task }: TaskFormProps) {
         const subtasks = data.subtasks.map((subtask, index) => {
             return { ...subtask, id: generateId() + index, taskId: task ? task.id : newTaskId }
         })
-
+        
         const newTask: Task = { 
             id: generateId(), 
             title: data.title, 
@@ -66,6 +66,11 @@ function TaskForm({ task }: TaskFormProps) {
             status: data.status, 
             subtasks,
             columnId: task ? task.id : column?.id! 
+        }
+
+        if (task) {
+            console.log('edit')
+            return
         }
 
         dispatch(handleAddTask(currentBoard!, newTask))
