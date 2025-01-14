@@ -40,8 +40,9 @@ function BoardForm({ board }: BoardFormProps) {
     }
 
     function onSubmit(data: BoardSchema) {
+        const newBoardId = generateId()
         const columns = data.columns.map((column, index) => {
-            return { ...column, id: generateId() + index }
+            return { ...column, id: generateId() + index, boardId: board ? board.id : newBoardId }
         })
 
         if (board) {
@@ -50,7 +51,7 @@ function BoardForm({ board }: BoardFormProps) {
         }
 
         reset()
-        dispatch(addBoard({ id: generateId(), name: data.name, columns: columns as Column[] }))
+        dispatch(addBoard({ id: newBoardId, name: data.name, columns: columns as Column[] }))
     }
 
     useEffect(() => {

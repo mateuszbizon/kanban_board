@@ -8,6 +8,7 @@ export type Column = {
     id: string;
     name: string;
     tasks: Task[];
+    boardId: string;
 }
 
 export type Task = {
@@ -16,10 +17,12 @@ export type Task = {
     description: string;
     status: string;
     subtasks: SubTask[];
+    columnId: string;
 }
 
 export type SubTask = {
     id: string;
     title: string;
     isCompleted: boolean;
+    taskId: string;
 }

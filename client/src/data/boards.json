@@ -1,550 +1,149 @@
 {
-  "boards": [
-    {
-      "id": "1",
-      "name": "Platform Launch",
-      "columns": [
-        {
-          "id": "1",
-          "name": "Todo",
-          "tasks": [
-            {
-              "id": "1",
-              "title": "Build UI for onboarding flow",
-              "description": "Description",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "1",
-                  "title": "Sign up page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "2",
-                  "title": "Sign in page",
-                  "isCompleted": false
-                },
-                {
-                  "id": "3",
-                  "title": "Welcome page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "2",
-              "title": "Build UI for search",
-              "description": "Description",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "4",
-                  "title": "Search page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "3",
-              "title": "Build settings UI",
-              "description": "Description",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "5",
-                  "title": "Account page",
-                  "isCompleted": false
-                },
-                {
-                  "id": "6",
-                  "title": "Billing page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "4",
-              "title": "QA and test all major user journeys",
-              "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "7",
-                  "title": "Internal testing",
-                  "isCompleted": false
-                },
-                {
-                  "id": "8",
-                  "title": "External testing",
-                  "isCompleted": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "name": "Doing",
-          "tasks": [
-            {
-              "id": "5",
-              "title": "Design settings and search pages",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "9",
-                  "title": "Settings - Account page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "10",
-                  "title": "Settings - Billing page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "11",
-                  "title": "Search page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "6",
-              "title": "Add account management endpoints",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "12",
-                  "title": "Upgrade plan",
-                  "isCompleted": true
-                },
-                {
-                  "id": "13",
-                  "title": "Cancel plan",
-                  "isCompleted": true
-                },
-                {
-                  "id": "14",
-                  "title": "Update payment method",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "7",
-              "title": "Design onboarding flow",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "15",
-                  "title": "Sign up page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "16",
-                  "title": "Sign in page",
-                  "isCompleted": false
-                },
-                {
-                  "id": "17",
-                  "title": "Welcome page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "8",
-              "title": "Add search enpoints",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "18",
-                  "title": "Add search endpoint",
-                  "isCompleted": true
-                },
-                {
-                  "id": "19",
-                  "title": "Define search filters",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "9",
-              "title": "Add authentication endpoints",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "20",
-                  "title": "Define user model",
-                  "isCompleted": true
-                },
-                {
-                  "id": "21",
-                  "title": "Add auth endpoints",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "10",
-              "title": "Research pricing points of various competitors and trial different business models",
-              "description": "We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "22",
-                  "title": "Research competitor pricing and business models",
-                  "isCompleted": true
-                },
-                {
-                  "id": "23",
-                  "title": "Outline a business model that works for our solution",
-                  "isCompleted": false
-                },
-                {
-                  "id": "24",
-                  "title": "Talk to potential customers about our proposed solution and ask for fair price expectancy",
-                  "isCompleted": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "3",
-          "name": "Done",
-          "tasks": [
-            {
-              "id": "11",
-              "title": "Conduct 5 wireframe tests",
-              "description": "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
-              "status": "Done",
-              "subtasks": [
-                {
-                  "id": "25",
-                  "title": "Complete 5 wireframe prototype tests",
-                  "isCompleted": true
-                }
-              ]
-            },
-            {
-              "id": "12",
-              "title": "Create wireframe prototype",
-              "description": "Create a prototype based on the wireframes. This includes all layouts and UX decisions based on previous tests.",
-              "status": "Done",
-              "subtasks": [
-                {
-                  "id": "26",
-                  "title": "Create wireframe layout",
-                  "isCompleted": true
-                },
-                {
-                  "id": "27",
-                  "title": "Add interactivity",
-                  "isCompleted": true
-                }
-              ]
-            },
-            {
-              "id": "13",
-              "title": "Design high-fidelity UI",
-              "description": "Develop the design to match our high-fidelity wireframes, ensuring all accessibility needs are met.",
-              "status": "Done",
-              "subtasks": [
-                {
-                  "id": "28",
-                  "title": "Complete all screens",
-                  "isCompleted": true
-                },
-                {
-                  "id": "29",
-                  "title": "Ensure accessibility compliance",
-                  "isCompleted": true
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "1-1",
-      "name": "Platform Launch2",
-      "columns": [
-        {
-          "id": "1-1",
-          "name": "Todo",
-          "tasks": [
-            {
-              "id": "1-1",
-              "title": "Build UI for onboarding flow",
-              "description": "Description",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "1-1",
-                  "title": "Sign up page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "2-1",
-                  "title": "Sign in page",
-                  "isCompleted": false
-                },
-                {
-                  "id": "3-1",
-                  "title": "Welcome page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "2-1",
-              "title": "Build UI for search",
-              "description": "Description",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "4-1",
-                  "title": "Search page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "3-1",
-              "title": "Build settings UI",
-              "description": "Description",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "5-1",
-                  "title": "Account page",
-                  "isCompleted": false
-                },
-                {
-                  "id": "6-1",
-                  "title": "Billing page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "4-1",
-              "title": "QA and test all major user journeys",
-              "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
-              "status": "Todo",
-              "subtasks": [
-                {
-                  "id": "7-1",
-                  "title": "Internal testing",
-                  "isCompleted": false
-                },
-                {
-                  "id": "8-1",
-                  "title": "External testing",
-                  "isCompleted": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2-1",
-          "name": "Doing",
-          "tasks": [
-            {
-              "id": "5-1",
-              "title": "Design settings and search pages",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "9-1",
-                  "title": "Settings - Account page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "10-1",
-                  "title": "Settings - Billing page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "11-1",
-                  "title": "Search page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "6-1",
-              "title": "Add account management endpoints",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "12-1",
-                  "title": "Upgrade plan",
-                  "isCompleted": true
-                },
-                {
-                  "id": "13-1",
-                  "title": "Cancel plan",
-                  "isCompleted": true
-                },
-                {
-                  "id": "14-1",
-                  "title": "Update payment method",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "7-1",
-              "title": "Design onboarding flow",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "15-1",
-                  "title": "Sign up page",
-                  "isCompleted": true
-                },
-                {
-                  "id": "16-1",
-                  "title": "Sign in page",
-                  "isCompleted": false
-                },
-                {
-                  "id": "17-1",
-                  "title": "Welcome page",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "8-1",
-              "title": "Add search enpoints",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "18-1",
-                  "title": "Add search endpoint",
-                  "isCompleted": true
-                },
-                {
-                  "id": "19-1",
-                  "title": "Define search filters",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "9-1",
-              "title": "Add authentication endpoints",
-              "description": "Description",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "20-1",
-                  "title": "Define user model",
-                  "isCompleted": true
-                },
-                {
-                  "id": "21-1",
-                  "title": "Add auth endpoints",
-                  "isCompleted": false
-                }
-              ]
-            },
-            {
-              "id": "10-1",
-              "title": "Research pricing points of various competitors and trial different business models",
-              "description": "We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.",
-              "status": "Doing",
-              "subtasks": [
-                {
-                  "id": "22-1",
-                  "title": "Research competitor pricing and business models",
-                  "isCompleted": true
-                },
-                {
-                  "id": "23-1",
-                  "title": "Outline a business model that works for our solution",
-                  "isCompleted": false
-                },
-                {
-                  "id": "24-1",
-                  "title": "Talk to potential customers about our proposed solution and ask for fair price expectancy",
-                  "isCompleted": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "3-1",
-          "name": "Done",
-          "tasks": [
-            {
-              "id": "11-1",
-              "title": "Conduct 5 wireframe tests",
-              "description": "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
-              "status": "Done",
-              "subtasks": [
-                {
-                  "id": "25-1",
-                  "title": "Complete 5 wireframe prototype tests",
-                  "isCompleted": true
-                }
-              ]
-            },
-            {
-              "id": "12-1",
-              "title": "Create wireframe prototype",
-              "description": "Create a prototype based on the wireframes. This includes all layouts and UX decisions based on previous tests.",
-              "status": "Done",
-              "subtasks": [
-                {
-                  "id": "26-1",
-                  "title": "Create wireframe layout",
-                  "isCompleted": true
-                },
-                {
-                  "id": "27-1",
-                  "title": "Add interactivity",
-                  "isCompleted": true
-                }
-              ]
-            },
-            {
-              "id": "13-1",
-              "title": "Design high-fidelity UI",
-              "description": "Develop the design to match our high-fidelity wireframes, ensuring all accessibility needs are met.",
-              "status": "Done",
-              "subtasks": [
-                {
-                  "id": "28-1",
-                  "title": "Complete all screens",
-                  "isCompleted": true
-                },
-                {
-                  "id": "29-1",
-                  "title": "Ensure accessibility compliance",
-                  "isCompleted": true
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"boards": [
+		{
+			"id": "board1",
+			"name": "Project Management",
+			"columns": [
+				{
+					"id": "column1",
+					"name": "To Do",
+					"boardId": "board1",
+					"tasks": [
+						{
+							"id": "task1",
+							"title": "Set up project",
+							"description": "Initialize repository and set up basic project structure.",
+							"status": "To Do",
+							"columnId": "column1",
+							"subtasks": [
+								{
+									"id": "subtask1",
+									"title": "Create GitHub repository",
+									"isCompleted": false,
+									"taskId": "task1"
+								},
+								{
+									"id": "subtask2",
+									"title": "Set up CI/CD",
+									"isCompleted": false,
+									"taskId": "task1"
+								}
+							]
+						},
+						{
+							"id": "task2",
+							"title": "Write documentation",
+							"description": "Create initial project documentation for the team.",
+							"status": "To Do",
+							"columnId": "column1",
+							"subtasks": [
+								{
+									"id": "subtask3",
+									"title": "Outline project goals",
+									"isCompleted": false,
+									"taskId": "task2"
+								},
+								{
+									"id": "subtask4",
+									"title": "Define deliverables",
+									"isCompleted": false,
+									"taskId": "task2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "column2",
+					"name": "In Progress",
+					"boardId": "board1",
+					"tasks": [
+						{
+							"id": "task3",
+							"title": "Develop login feature",
+							"description": "Implement user login functionality.",
+							"status": "In Progress",
+							"columnId": "column2",
+							"subtasks": [
+								{
+									"id": "subtask5",
+									"title": "Design login UI",
+									"isCompleted": true,
+									"taskId": "task3"
+								},
+								{
+									"id": "subtask6",
+									"title": "Implement authentication logic",
+									"isCompleted": false,
+									"taskId": "task3"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "board2",
+			"name": "Personal Goals",
+			"columns": [
+				{
+					"id": "column3",
+					"name": "To Do",
+					"boardId": "board2",
+					"tasks": [
+						{
+							"id": "task4",
+							"title": "Start a new book",
+							"description": "Pick a new book to read this month.",
+							"status": "To Do",
+							"columnId": "column3",
+							"subtasks": [
+								{
+									"id": "subtask7",
+									"title": "Choose a genre",
+									"isCompleted": false,
+									"taskId": "task4"
+								},
+								{
+									"id": "subtask8",
+									"title": "Visit a bookstore",
+									"isCompleted": false,
+									"taskId": "task4"
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "column4",
+					"name": "Completed",
+					"boardId": "board2",
+					"tasks": [
+						{
+							"id": "task5",
+							"title": "Exercise daily",
+							"description": "Achieve a streak of 30 days of exercise.",
+							"status": "Completed",
+							"columnId": "column4",
+							"subtasks": [
+								{
+									"id": "subtask9",
+									"title": "Track progress",
+									"isCompleted": true,
+									"taskId": "task5"
+								},
+								{
+									"id": "subtask10",
+									"title": "Try a new workout",
+									"isCompleted": true,
+									"taskId": "task5"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
 }

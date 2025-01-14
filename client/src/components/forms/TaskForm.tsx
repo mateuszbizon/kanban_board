@@ -13,6 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import CrossIcon from '../icons/CrossIcon';
 import { generateId } from '@/lib/generateId';
 import { handleAddTask } from '@/store/actions/tasks';
+import { getColumnByStatus } from '@/lib/getColumn';
 
 type TaskFormProps = {
     task?: Task;
@@ -21,7 +22,7 @@ type TaskFormProps = {
 function TaskForm({ task }: TaskFormProps) {
     const dispatch = useDispatch<AppDispatch>()
     const { currentBoard } = useSelector((state: RootState) => state.board)
-    const [status, setStatus] = useState(task ? task.status : currentBoard?.columns[0].name!)
+    const [column, setColumn] = useState(task ? () => getColumnByStatus(currentBoard, task.status) : currentBoard?.columns[0])
     const { handleSubmit, register, control, reset, setValue } = useForm<TaskSchema>({
         resolver: zodResolver(taskSchema),
         defaultValues: {
@@ -38,7 +39,9 @@ function TaskForm({ task }: TaskFormProps) {
     })
 
     function changeStatus(statusName: string) {
-        setStatus(statusName)
+        const column = getColumnByStatus(currentBoard, statusName)
+
+        setColumn(column)
         setValue("status", statusName)
     }
 
@@ -50,14 +53,10 @@ function TaskForm({ task }: TaskFormProps) {
         remove(index)
     }
 
-    function onSubmit(data: TaskSchema) {
-        if (task) {
-            console.log("Task to edit")
-            return
-        }
-
+    function onSubmit(data: TaskSchema) { 
+        const newTaskId = generateId()
         const subtasks = data.subtasks.map((subtask, index) => {
-            return { ...subtask, id: generateId() + index }
+            return { ...subtask, id: generateId() + index, taskId: task ? task.id : newTaskId }
         })
 
         const newTask: Task = { 
@@ -65,7 +64,8 @@ function TaskForm({ task }: TaskFormProps) {
             title: data.title, 
             description: data.description, 
             status: data.status, 
-            subtasks 
+            subtasks,
+            columnId: task ? task.id : column?.id! 
         }
 
         dispatch(handleAddTask(currentBoard!, newTask))
@@ -108,16 +108,18 @@ function TaskForm({ task }: TaskFormProps) {
             })}
             <Button type='button' className='w-full' variant={"secondary"} onClick={addSubtask}>+ Add New Subtask</Button>
         </div>
-        <div className='space-y-2'>
-            <Label htmlFor='title'>Status</Label>
-            <SelectDropdown value={status} onChangeValue={changeStatus}>
-                {currentBoard?.columns.map(item => {
-                    return (
-                        <SelectDropdown.Item key={item.id} value={item.name}>{item.name}</SelectDropdown.Item>
-                    )
-                })}
-            </SelectDropdown>
-        </div>
+        {column && (
+            <div className='space-y-2'>
+                <Label>Status</Label>
+                <SelectDropdown value={column.name} onChangeValue={changeStatus}>
+                    {currentBoard?.columns.map(item => {
+                        return (
+                            <SelectDropdown.Item key={item.id} value={item.name}>{item.name}</SelectDropdown.Item>
+                        )
+                    })}
+                </SelectDropdown>
+            </div>
+        )}
         <Button type='submit' className='w-full'>{task ? "Save Changes" : "Create Task"}</Button>
     </form>
   )
