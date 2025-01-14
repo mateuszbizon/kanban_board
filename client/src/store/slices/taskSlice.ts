@@ -25,6 +25,18 @@ const taskSlice = createSlice({
 
             state.updatedBoard = updatedBoard
         },
+        deleteTask: (state, action: PayloadAction<{ board: Board, columndId: string, taskId: string }>) => {
+            const currentBoard = action.payload.board
+            const updatedBoard = { ...currentBoard, columns: currentBoard.columns.map(column => {
+                if (column.id === action.payload.columndId) {
+                    return { ...column, tasks: column.tasks.filter(task => task.id !== action.payload.taskId) }
+                }
+
+                return column
+            }) }
+
+            state.updatedBoard = updatedBoard
+        },
         editSubtask: (state, action: PayloadAction<{ board: Board, columndId: string, subtask: SubTask }>) => {
             const currentBoard = action.payload.board
             const updatedBoard = { ...currentBoard, columns: currentBoard.columns.map(column => {
@@ -52,5 +64,5 @@ const taskSlice = createSlice({
     }
 })
 
-export const { addTask, editSubtask } = taskSlice.actions
+export const { addTask, editSubtask, deleteTask } = taskSlice.actions
 export default taskSlice.reducer
