@@ -9,10 +9,10 @@ type DeleteTaskProps = {
     isDeleteTaskOpen: boolean;
     setIsDeleteTaskOpen: React.Dispatch<React.SetStateAction<boolean>>
     task: Task;
-    onClose?: () => void;
+    closeCurrentTask?: () => void;
 }
 
-function DeleteTask({ isDeleteTaskOpen, setIsDeleteTaskOpen, task, onClose }: DeleteTaskProps) {
+function DeleteTask({ isDeleteTaskOpen, setIsDeleteTaskOpen, task, closeCurrentTask }: DeleteTaskProps) {
     const { currentBoard } = useSelector((state: RootState) => state.board)
     const dispatch = useDispatch<AppDispatch>()
 
@@ -21,8 +21,8 @@ function DeleteTask({ isDeleteTaskOpen, setIsDeleteTaskOpen, task, onClose }: De
 
         dispatch(handleDeleteTask(currentBoard, task.columnId, task.id))
 
-        if (onClose) {
-            onClose()
+        if (closeCurrentTask) {
+            closeCurrentTask()
         }
     }
 

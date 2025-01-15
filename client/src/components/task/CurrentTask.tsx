@@ -12,10 +12,10 @@ import EditTask from './EditTask';
 
 type CurrentTaskProps = {
     task: Task;
-    onClose?: () => void;
+    closeCurrentTask?: () => void;
 }
 
-function CurrentTask({ onClose, task }: CurrentTaskProps) {
+function CurrentTask({ closeCurrentTask, task }: CurrentTaskProps) {
     const [isTaskOptionsOpen, setIsTaskOptionsOpen] = useState(false)
     const [isEditTaskOpen, setIsEditTaskOpen] = useState(false)
     const [isDeleteTaskOpen, setIsDeleteTaskOpen] = useState(false)
@@ -61,7 +61,12 @@ function CurrentTask({ onClose, task }: CurrentTaskProps) {
                 />}
             </div>
         </div>
-        <DeleteTask isDeleteTaskOpen={isDeleteTaskOpen} setIsDeleteTaskOpen={setIsDeleteTaskOpen} task={task} onClose={onClose} />
+        <DeleteTask 
+            isDeleteTaskOpen={isDeleteTaskOpen} 
+            setIsDeleteTaskOpen={setIsDeleteTaskOpen} 
+            task={task} 
+            closeCurrentTask={closeCurrentTask} 
+        />
         <EditTask isEditTaskOpen={isEditTaskOpen} setIsEditTaskOpen={setIsEditTaskOpen} task={task} />
     </>
   )

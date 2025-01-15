@@ -18,7 +18,7 @@ function TaskCard({ task }: TaskCardProps) {
             <p className='text-xs text-medium-grey'>{getSubtasksCompletedLength(task.subtasks)} of {task.subtasks.length} subtasks</p>
         </div>
         <Modal isOpen={isCurrentTaskOpen} onClose={() => setIsCurrentTaskOpen(false)} isModalDelete={false}>
-            <CurrentTask task={task} onClose={() => setIsCurrentTaskOpen(false)}/>
+            <CurrentTask task={task} closeCurrentTask={() => setIsCurrentTaskOpen(false)}/>
         </Modal>
     </div>
   )
