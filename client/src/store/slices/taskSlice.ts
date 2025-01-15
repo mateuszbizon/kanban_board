@@ -25,6 +25,42 @@ const taskSlice = createSlice({
 
             state.updatedBoard = updatedBoard
         },
+        editTask: (state, action: PayloadAction<{ board: Board, task: Task, oldColumndId: string }>) => {
+            const currentBoard = action.payload.board
+
+            if (action.payload.oldColumndId === action.payload.task.columnId) {
+                const updatedBoard = { ...currentBoard, columns: currentBoard.columns.map(column => {
+                    if (column.id === action.payload.task.columnId) {
+                        return { ...column, tasks: column.tasks.map(task => {
+                            if (task.id === action.payload.task.id) {
+                                return action.payload.task
+                            }
+
+                            return task
+                        }) }
+                    }
+    
+                    return column
+                }) }
+
+                state.updatedBoard = updatedBoard
+                return
+            }
+
+            const updatedBoard = { ...currentBoard, columns: currentBoard.columns.map(column => {
+                if (column.id === action.payload.task.columnId) {
+                    return { ...column, tasks: [...column.tasks, action.payload.task] }
+                }
+
+                if (column.id === action.payload.oldColumndId) {
+                    return { ...column, tasks: column.tasks.filter(task => task.id !== action.payload.task.id) }
+                }
+
+                return column
+            }) }
+
+            state.updatedBoard = updatedBoard
+        },
         deleteTask: (state, action: PayloadAction<{ board: Board, columndId: string, taskId: string }>) => {
             const currentBoard = action.payload.board
             const updatedBoard = { ...currentBoard, columns: currentBoard.columns.map(column => {
@@ -64,5 +100,5 @@ const taskSlice = createSlice({
     }
 })
 
-export const { addTask, editSubtask, deleteTask } = taskSlice.actions
+export const { addTask, editSubtask, deleteTask, editTask } = taskSlice.actions
 export default taskSlice.reducer

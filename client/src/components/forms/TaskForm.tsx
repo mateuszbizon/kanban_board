@@ -12,7 +12,7 @@ import { taskSchema, TaskSchema } from '@/validations/taskSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CrossIcon from '../icons/CrossIcon';
 import { generateId } from '@/lib/generateId';
-import { handleAddTask } from '@/store/actions/tasks';
+import { handleAddTask, handleEditTask } from '@/store/actions/tasks';
 import { getColumnByStatus } from '@/lib/getColumn';
 
 type TaskFormProps = {
@@ -60,16 +60,27 @@ function TaskForm({ task }: TaskFormProps) {
         })
         
         const newTask: Task = { 
-            id: generateId(), 
+            id: newTaskId, 
             title: data.title, 
             description: data.description, 
             status: data.status, 
             subtasks,
-            columnId: task ? task.id : column?.id! 
+            columnId: column?.id! 
         }
 
         if (task) {
-            console.log('edit')
+            const editTask: Task = { 
+                ...task, 
+                title: data.title, 
+                description: data.description, 
+                status: data.status, 
+                subtasks, 
+                columnId: column?.id! 
+            
+            }
+            const oldColumnId = task.columnId
+
+            dispatch(handleEditTask(currentBoard!, editTask, oldColumnId))
             return
         }
 

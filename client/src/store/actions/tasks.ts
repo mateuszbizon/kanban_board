@@ -1,10 +1,18 @@
 import { Board, SubTask, Task } from "@/types";
-import { addTask, deleteTask, editSubtask } from "../slices/taskSlice";
+import { addTask, deleteTask, editSubtask, editTask } from "../slices/taskSlice";
 import { AppDispatch, RootState } from "..";
 import { updateCurrentBoard } from "../slices/boardSlice";
 
 export const handleAddTask = (board: Board, task: Task) => (dispatch: AppDispatch, getState: () => RootState) => {
     dispatch(addTask({ board, task }))
+
+    const updatedBoard = getState().task.updatedBoard
+
+    dispatch(updateCurrentBoard(updatedBoard!))
+}
+
+export const handleEditTask = (board: Board, task: Task, oldColumndId: string) => (dispatch: AppDispatch, getState: () => RootState) => {
+    dispatch(editTask({ board, task, oldColumndId }))
 
     const updatedBoard = getState().task.updatedBoard
 
