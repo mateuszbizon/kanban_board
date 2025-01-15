@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import Popover from '../common/Popover';
 import useClickOutside from '@/hooks/useClickOutside';
 import SubtasksList from '../lists/SubtasksList';
-import SubtaskCheckbox from './SubtaskCheckbox';
+import SubtaskCard from '../cards/SubtaskCard';
 import DeleteTask from './DeleteTask';
 import EditTask from './EditTask';
 
@@ -56,7 +56,7 @@ function CurrentTask({ closeCurrentTask, task }: CurrentTaskProps) {
                 {<SubtasksList
                     subtasks={task.subtasks}
                     renderItem={(subtask) => (
-                        <SubtaskCheckbox key={subtask.id} subtask={subtask} columnId={task.columnId} />
+                        <SubtaskCard key={subtask.id} subtask={subtask} columnId={task.columnId} />
                     )}
                 />}
             </div>

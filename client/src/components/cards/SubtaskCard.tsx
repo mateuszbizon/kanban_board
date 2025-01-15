@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/store';
 import { handleEditSubtask } from '@/store/actions/subtasks';
 
-type SubtaskCheckboxProps = {
+type SubtaskCardProps = {
     subtask: SubTask;
     columnId: string
 }
 
-function SubtaskCheckbox({ subtask, columnId }: SubtaskCheckboxProps) {
+function SubtaskCard({ subtask, columnId }: SubtaskCardProps) {
     const { currentBoard } = useSelector((state: RootState) => state.board)
     const dispatch = useDispatch<AppDispatch>()
     const [isCompleted, setIsCompleted] = useState(subtask.isCompleted)
@@ -34,4 +34,4 @@ function SubtaskCheckbox({ subtask, columnId }: SubtaskCheckboxProps) {
   )
 }
 
-export default SubtaskCheckbox
+export default SubtaskCard
