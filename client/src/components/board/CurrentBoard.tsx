@@ -10,17 +10,19 @@ type CurrentBoardProps = {
 function CurrentBoard({ board }: CurrentBoardProps) {
   return (
     <div className="h-full">
-      <ColumnsList 
-        columns={board.columns}
-        renderItem={(column) => (
-          <ColumnCard key={column.id} column={column} />
+        <ColumnsList 
+            columns={board.columns}
+            renderItem={(column) => (
+                <div className="shrink-0">
+                    <ColumnCard key={column.id} column={column} />
+                </div>
+            )}
+        />
+        {!board.columns.length && (
+            <div className="flex flex-col justify-center items-center h-full">
+                <BoardEmpty />
+            </div>
         )}
-      />
-      {!board.columns.length && (
-          <div className="flex flex-col justify-center items-center h-full">
-              <BoardEmpty />
-          </div>
-      )}
     </div>
   )
 }
