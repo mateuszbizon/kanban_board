@@ -3,7 +3,7 @@ import { Checkbox } from '../ui/checkbox'
 import { SubTask } from '@/types'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/store';
-import { handleEditSubtask } from '@/store/actions/tasks';
+import { handleEditSubtask } from '@/store/actions/subtasks';
 
 type SubtaskCheckboxProps = {
     subtask: SubTask;
