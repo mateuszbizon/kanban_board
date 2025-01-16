@@ -17,17 +17,15 @@ function CurrentBoard({ board }: CurrentBoardProps) {
                 <ColumnsList 
                     columns={board.columns}
                     renderItem={(column) => (
-                        <div className="shrink-0">
-                            <ColumnStatusCard key={column.id} column={column} />
-                        </div>
+                        <ColumnStatusCard key={column.id} column={column} />
                     )}
                 />
                 <div className="flex gap-5">
                     <ColumnsList 
                         columns={board.columns}
                         renderItem={(column) => (
-                            <div className="shrink-0">
-                                <ColumnCard key={column.id} column={column} />
+                            <div key={column.id} className="shrink-0">
+                                <ColumnCard column={column} />
                             </div>
                         )}
                     />
