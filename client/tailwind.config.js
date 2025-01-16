@@ -43,6 +43,9 @@ export default {
       height: {
         "topbar": "5rem",
       },
+      width: {
+        "column": "17.5rem"
+      },
       padding: {
         "main": "1rem"
       },
