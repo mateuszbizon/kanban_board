@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import AddIcon from "../icons/AddIcon"
-import ChevronDownIcon from "../icons/ChevronDownIcon"
 import LogoDarkIcon from "../icons/LogoDarkIcon"
 import LogoIcon from "../icons/LogoIcon"
 import { Button } from "../ui/button"
@@ -9,6 +8,7 @@ import BoardOptions from "../board/BoardOptions"
 import Modal from "../common/Modal"
 import TaskForm from "../forms/TaskForm"
 import { useState } from "react"
+import TopbarOptions from "./TopbarOptions"
 
 function Topbar() {
     const { isOpen: isSidebarOpen } = useSelector((state: RootState) => state.sidebar)
@@ -25,10 +25,7 @@ function Topbar() {
                 <div className="md:hidden">
                     <LogoIcon />
                 </div>
-                <Button variant={"transparent"} className="text-black text-lg p-0 md:hidden">
-                    {currentBoard?.name}
-                    <ChevronDownIcon />
-                </Button>
+                <TopbarOptions />
                 <span className="text-black text-lg hidden md:block">{currentBoard?.name}</span>
             </div>
 
