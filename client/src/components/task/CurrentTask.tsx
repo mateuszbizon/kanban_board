@@ -37,7 +37,7 @@ function CurrentTask({ closeCurrentTask, task }: CurrentTaskProps) {
     <>
         <div className='space-y-4'>
             <div className='flex justify-between items-center'>
-                <h2 className='text-lg text-black'>{task.title}</h2>
+                <h2 className='form-title'>{task.title}</h2>
                 <div ref={taskOptionsRef} className='relative'>
                     <Button variant={"transparent"} className='px-0' onClick={() => setIsTaskOptionsOpen(prev => !prev)}>
                         <VerticalElipsisIcon />

@@ -20,7 +20,7 @@ function Modal({ isOpen, onClose, children, isModalDelete, onDelete }: ModalProp
     const { closeModal, handleDelete } = useModal({ isOpen, onClose, onDelete, modalRef })
 
   return ReactDOM.createPortal(
-    <dialog ref={modalRef} className="p-main bg-white rounded-lg w-[315px] md:w-[480px] max-h-[calc(100vh-200px)] overflow-y-auto backdrop:bg-black/50">
+    <dialog ref={modalRef} className="p-main bg-white dark:bg-dark-grey rounded-lg w-[315px] md:w-[480px] max-h-[calc(100vh-200px)] overflow-y-auto backdrop:bg-black/50">
         {!isModalDelete && (
             <div>
                 {children}

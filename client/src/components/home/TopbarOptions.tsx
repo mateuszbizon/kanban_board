@@ -29,7 +29,7 @@ function TopbarOptions() {
     <div ref={topbarOptionsRef}>
         <Button 
             variant={"transparent"} 
-            className="text-black text-lg p-0 md:hidden" 
+            className="text-black dark:text-white text-lg p-0 md:hidden" 
             onClick={() => setIsTopbarOptionsOpen(prev => !prev)}
         >
             {currentBoard?.name}

@@ -90,7 +90,7 @@ function TaskForm({ task }: TaskFormProps) {
 
   return (
     <form className='space-y-5' onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='text-lg text-black'>{task ? "Edit Task" : "Add New Task"}</h2>
+        <h2 className='form-title'>{task ? "Edit Task" : "Add New Task"}</h2>
         <div className='space-y-2'>
             <Label htmlFor='title'>Title</Label>
             <Input id='title' {...register("title")} placeholder='e.g. Take coffee break' />

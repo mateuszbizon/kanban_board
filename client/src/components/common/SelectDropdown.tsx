@@ -44,14 +44,14 @@ function SelectDropdown({ value, onChangeValue, children }: SelectDropdownProps)
             <Button
                 type='button' 
                 variant={"transparent"} 
-                className={`w-full justify-between p-main text-black border rounded ${isSelectOpen ? "border-main-purple" : "border-medium-grey"}`} 
+                className={`w-full justify-between p-main text-black dark:text-white border rounded ${isSelectOpen ? "border-main-purple" : "border-medium-grey"}`} 
                 onClick={() => setIsSelectOpen(prev => !prev)}
             >
                 <span>{value}</span>
                 <ChevronDownIcon />
             </Button>
             <div 
-                className={`absolute top-[110%] left-0 right-0 bg-white rounded-lg ${isSelectOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                className={`absolute top-[110%] left-0 right-0 bg-white dark:bg-background rounded-lg ${isSelectOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
             >
                 <ul>{children}</ul>
             </div>

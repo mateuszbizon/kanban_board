@@ -26,7 +26,7 @@ function Popover({ children, top, bottom, left, right, isOpen, centerX, centerY,
 
   return (
     <div
-        className={cn(`p-main bg-white rounded-lg z-50 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`, className)}
+        className={cn(`p-main bg-white dark:bg-background rounded-lg z-50 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`, className)}
         style={{ position, top, bottom, left, right, transform: `translate(${transformX}, ${transformY})` }}    
         {...props} 
     >
