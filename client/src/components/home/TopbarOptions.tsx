@@ -37,7 +37,7 @@ function TopbarOptions() {
                 <ChevronDownIcon />
             </div>
         </Button>
-        <Popover top="100px" left="50%" isOpen={isTopbarOptionsOpen} centerX className="!p-0 w-[260px]">
+        <Popover top="100px" left="50%" isOpen={isTopbarOptionsOpen} centerX className="!p-0 w-[260px] dark:bg-dark-grey">
             <div className='space-y-5 py-main'>
                 <span className='px-main text-medium-grey uppercase text-xs tracking-[0.25em]'>all boards ({boards.length})</span>
                 <div>
