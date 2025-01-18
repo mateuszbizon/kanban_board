@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import cors from "cors"
 import bodyParser from "body-parser"
 import errorHandler from "./middlewares/errorHandler"
+import boardRoutes from "./routes/boardRoutes"
 
 dotenv.config()
 
@@ -13,6 +14,8 @@ app.use(bodyParser.json())
 app.use(cors({
     origin: ["http://localhost:5173"],
 }))
+
+app.use("/boards", boardRoutes)
 
 app.use(errorHandler)
 
