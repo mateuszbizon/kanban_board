@@ -1,10 +1,14 @@
-import { useLayoutEffect, useState } from 'react'
+import { AppDispatch, RootState } from '@/store';
+import { setDarkMode } from '@/store/slices/darkModeSlice';
+import { useLayoutEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 function useDarkMode() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const { isDarkMode } = useSelector((state: RootState) => state.darkMode)
+    const dispatch = useDispatch<AppDispatch>()
 
 	function toggleDarkMode() {
-		setIsDarkMode(prev => !prev);
+		dispatch(setDarkMode(!isDarkMode))
 
 		if (isDarkMode) {
 			document.documentElement.classList.remove("dark");
@@ -20,7 +24,7 @@ function useDarkMode() {
         const theme = localStorage.getItem("theme")
 
         if (theme === "dark") {
-            setIsDarkMode(true)
+            dispatch(setDarkMode(true))
             document.documentElement.classList.add("dark");
             return
         }

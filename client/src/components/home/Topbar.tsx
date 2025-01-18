@@ -9,14 +9,12 @@ import Modal from "../common/Modal";
 import TaskForm from "../forms/TaskForm";
 import { useState } from "react";
 import TopbarOptions from "./TopbarOptions";
+import LogoLightIcon from "../icons/LogoLightIcon";
 
 function Topbar() {
-	const { isOpen: isSidebarOpen } = useSelector(
-		(state: RootState) => state.sidebar
-	);
-	const { boards, currentBoard } = useSelector(
-		(state: RootState) => state.board
-	);
+	const { isOpen: isSidebarOpen } = useSelector((state: RootState) => state.sidebar);
+	const { boards, currentBoard } = useSelector((state: RootState) => state.board);
+	const { isDarkMode } = useSelector((state: RootState) => state.darkMode);
 	const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
 
 	return (
@@ -25,7 +23,11 @@ function Topbar() {
 				className={`hidden md:flex items-center bg-white dark:bg-dark-grey h-topbar p-main border-r border-r-lines ${
 					isSidebarOpen ? "w-[260px] md:w-[300px]" : "w-auto"
 				}`}>
-				<LogoDarkIcon />
+				{isDarkMode ? (
+                    <LogoLightIcon />
+                ) : (
+                    <LogoDarkIcon />
+                )}
 			</div>
 			<div className='flex justify-between items-center grow bg-white dark:bg-dark-grey h-topbar p-main'>
 				<div className='flex items-center gap-2'>

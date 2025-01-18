@@ -3,6 +3,7 @@ import sidebarReducer from "./slices/sidebarSlice";
 import boardReducer from "./slices/boardSlice";
 import taskReducer from "./slices/taskSlice"
 import subtaskReducer from "./slices/subtaskSlice"
+import darkModeReducer from "./slices/darkModeSlice"
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         board: boardReducer,
         task: taskReducer,
         subtask: subtaskReducer,
+        darkMode: darkModeReducer,
     }
 })
 
