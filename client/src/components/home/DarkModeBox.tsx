@@ -1,33 +1,10 @@
-import { useLayoutEffect, useState } from "react";
 import DarkThemeIcon from "../icons/DarkThemeIcon";
 import LightThemeIcon from "../icons/LightThemeIcon";
 import { Button } from "../ui/button";
+import useDarkMode from "@/hooks/useDarkMode";
 
 function DarkModeBox() {
-	const [isDarkMode, setIsDarkMode] = useState(false);
-
-	function toggleDarkMode() {
-		setIsDarkMode(prev => !prev);
-
-		if (isDarkMode) {
-			document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light")
-			return;
-		}
-
-		document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark")
-	}
-
-    useLayoutEffect(() => {
-        const theme = localStorage.getItem("theme")
-
-        if (theme === "dark") {
-            setIsDarkMode(true)
-            document.documentElement.classList.add("dark");
-            return
-        }
-    }, [])
+	const { isDarkMode, toggleDarkMode } = useDarkMode()
 
 	return (
 		<div className='px-main'>
