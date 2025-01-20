@@ -9,3 +9,8 @@ export type DeleteBoardParams = {
 export type CreateTaskParams = {
     columnId: string;
 }
+
+export type UpdateTaskParams = {
+    taskId: string;
+    columnId: string;
+}

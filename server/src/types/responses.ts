@@ -19,3 +19,8 @@ export type DeleteBoardResponse = {
 export type CreateTaskResponse = {
     task: Task
 }
+
+export type UpdateTaskResponse = {
+    task: Task
+    oldColumnId: string
+}
