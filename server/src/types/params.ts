@@ -14,3 +14,7 @@ export type UpdateTaskParams = {
     taskId: string;
     columnId: string;
 }
+
+export type DeleteTaskParams = {
+    taskId: string;
+}
