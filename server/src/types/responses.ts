@@ -1,4 +1,4 @@
-import { Board } from "@prisma/client"
+import { Board, Task } from "@prisma/client"
 
 export type CreateBoardResponse = {
     board: Board
@@ -14,4 +14,8 @@ export type UpdateBoardResponse = {
 
 export type DeleteBoardResponse = {
     board: Board
+}
+
+export type CreateTaskResponse = {
+    task: Task
 }
