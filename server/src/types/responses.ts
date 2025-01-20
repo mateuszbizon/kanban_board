@@ -11,3 +11,7 @@ export type GetAllBoardsResponse = {
 export type UpdateBoardResponse = {
     board: Board
 }
+
+export type DeleteBoardResponse = {
+    board: Board
+}
