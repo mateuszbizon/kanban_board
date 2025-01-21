@@ -2,6 +2,7 @@ import CurrentBoard from "@/components/board/CurrentBoard"
 import NoBoards from "@/components/board/NoBoards"
 import Sidebar from "@/components/home/Sidebar"
 import Topbar from "@/components/home/Topbar"
+import MainLodaing from "@/components/loadings/MainLodaing"
 import useGetAllBoards from "@/hooks/services/boards/useGetAllBoards"
 import { RootState } from "@/store"
 import { useSelector } from "react-redux"
@@ -30,9 +31,7 @@ function HomePage() {
                 </div>
             </div>
         )}
-        {isLoading && (
-            <div>Loading...</div>
-        )}
+        {isLoading && <MainLodaing />}
     </div>
   )
 }
