@@ -5,6 +5,7 @@ import bodyParser from "body-parser"
 import errorHandler from "./middlewares/errorHandler"
 import boardRoutes from "./routes/boardRoutes"
 import taskRoutes from "./routes/taskRoutes"
+import subtaskRoutes from "./routes/subtaskRoutes"
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.use(cors({
 
 app.use("/boards", boardRoutes)
 app.use("/tasks", taskRoutes)
+app.use("/subtasks", subtaskRoutes)
 
 app.use(errorHandler)
 
