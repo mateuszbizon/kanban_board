@@ -18,3 +18,7 @@ export type UpdateTaskParams = {
 export type DeleteTaskParams = {
     taskId: string;
 }
+
+export type UpdateSubtaskParams = {
+    subtaskId: string;
+}

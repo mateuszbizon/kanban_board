@@ -8,6 +8,9 @@ export const MESSAGES = {
     task: {
         taskNotFound: "Task with that id not found"
     },
+    subtask: {
+        subtaskNotFound: "Subtask with that id not found"
+    },
     database: {
         databaseFail: "Database problems. Try again later"
     },
