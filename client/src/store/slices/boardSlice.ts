@@ -19,6 +19,9 @@ const boardSlice = createSlice({
         setCurrentBoard(state, action: PayloadAction<Board>) {
             state.currentBoard = action.payload
         },
+        setBoards: (state, action: PayloadAction<Board[]>) => {
+            state.boards = action.payload
+        },
         addBoard: (state, action: PayloadAction<Board>) => {
             state.boards = [...state.boards, action.payload]
             state.currentBoard = action.payload
@@ -51,5 +54,5 @@ const boardSlice = createSlice({
     }
 })
 
-export const { setCurrentBoard, addBoard, editBoard, deleteBoard, updateCurrentBoard } = boardSlice.actions
+export const { setCurrentBoard, setBoards, addBoard, editBoard, deleteBoard, updateCurrentBoard } = boardSlice.actions
 export default boardSlice.reducer
