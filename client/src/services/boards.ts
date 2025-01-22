@@ -12,3 +12,10 @@ export async function createBoard(board: BoardSchema) {
 
     return data
 }
+
+export async function updateBoard({ board, boardId }: { board: BoardSchema, boardId: string }) {
+    const { data } = await API.put(`/boards/update-board/${boardId}`, board)
+
+    return data
+    
+}

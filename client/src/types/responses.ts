@@ -7,3 +7,7 @@ export type GetAllBoardsResponse = {
 export type CreateBoardResponse = {
     board: Board
 }
+
+export type UpdateBoardResponse = {
+    board: Board
+}

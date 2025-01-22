@@ -3,23 +3,20 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Board, Column } from "@/types"
+import { Board } from "@/types"
 import { Button } from "../ui/button"
 import CrossIcon from "../icons/CrossIcon"
-import { generateId } from "@/lib/generateId"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/store"
-import { addBoard, editBoard } from "@/store/slices/boardSlice"
 import { useEffect } from "react"
 import useCreateBoard from "@/hooks/services/boards/useCreateBoard"
+import useUpdateBoard from "@/hooks/services/boards/useUpdateBoard"
 
 type BoardFormProps = {
     board?: Board | null;
 }
 
 function BoardForm({ board }: BoardFormProps) {
-    const dispatch = useDispatch<AppDispatch>()
     const { handleCreateBoard, isCreateBoardPending, isCreateBoardError } = useCreateBoard()
+    const { handleUpdateBoard, isUpdateBoardPending } = useUpdateBoard()
     const { handleSubmit, register, formState: { errors }, control, reset, setValue } = useForm<BoardSchema>({
         resolver: zodResolver(boardSchema),
         defaultValues: {
@@ -42,13 +39,8 @@ function BoardForm({ board }: BoardFormProps) {
     }
 
     function onSubmit(data: BoardSchema) {
-        const newBoardId = generateId()
-        const columns = data.columns.map((column, index) => {
-            return { ...column, id: generateId() + index, boardId: board ? board.id : newBoardId }
-        })
-
         if (board) {
-            dispatch(editBoard({ id: board.id, name: data.name, columns: columns as Column[] }))    
+            handleUpdateBoard({ board: data, boardId: board.id })
             return
         }
 
@@ -93,7 +85,13 @@ function BoardForm({ board }: BoardFormProps) {
             })}
             <Button type="button" variant={"secondary"} className="w-full" onClick={addColumn}>+ Add New Column</Button>
         </div>
-        <Button type="submit" className="w-full" disabled={isCreateBoardPending}>{board ? "Save Changes" : "Create New Board"}</Button>
+        <Button 
+            type="submit" 
+            className="w-full" 
+            disabled={isCreateBoardPending || isUpdateBoardPending}
+        >
+            {board ? "Save Changes" : "Create New Board"}
+        </Button>
     </form>
   )
 }
