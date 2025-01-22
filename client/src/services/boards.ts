@@ -16,6 +16,11 @@ export async function createBoard(board: BoardSchema) {
 export async function updateBoard({ board, boardId }: { board: BoardSchema, boardId: string }) {
     const { data } = await API.put(`/boards/update-board/${boardId}`, board)
 
-    return data
-    
+    return data   
+}
+
+export async function deleteBoard(boardId: string) {
+    const { data } = await API.delete(`/boards/delete-board/${boardId}`)
+
+    return data 
 }
