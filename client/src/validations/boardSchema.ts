@@ -6,8 +6,6 @@ export const boardSchema = z.object({
     columns: z.array(z.object({
         id: z.string().optional(),
         name: z.string().min(1, MINIMUM_LENGTH).max(20, COLUMN_MAX_LENGTH),
-        tasks: z.any(),
-        boardId: z.string().optional(),
     }))
 })
 

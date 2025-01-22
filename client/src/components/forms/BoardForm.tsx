@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/store"
 import { addBoard, editBoard } from "@/store/slices/boardSlice"
 import { useEffect } from "react"
+import useCreateBoard from "@/hooks/services/boards/useCreateBoard"
 
 type BoardFormProps = {
     board?: Board | null;
@@ -18,6 +19,7 @@ type BoardFormProps = {
 
 function BoardForm({ board }: BoardFormProps) {
     const dispatch = useDispatch<AppDispatch>()
+    const { handleCreateBoard, isCreateBoardPending, isCreateBoardError } = useCreateBoard()
     const { handleSubmit, register, formState: { errors }, control, reset, setValue } = useForm<BoardSchema>({
         resolver: zodResolver(boardSchema),
         defaultValues: {
@@ -32,7 +34,7 @@ function BoardForm({ board }: BoardFormProps) {
     })
 
     function addColumn() {
-        append({ name: "", tasks: [] })
+        append({ name: "" })
     }
 
     function removeColumn(fieldIndex: number) {
@@ -50,8 +52,11 @@ function BoardForm({ board }: BoardFormProps) {
             return
         }
 
-        reset()
-        dispatch(addBoard({ id: newBoardId, name: data.name, columns: columns as Column[] }))
+        handleCreateBoard(data)
+        
+        if (!isCreateBoardError) {
+            reset()
+        }
     }
 
     useEffect(() => {
@@ -88,7 +93,7 @@ function BoardForm({ board }: BoardFormProps) {
             })}
             <Button type="button" variant={"secondary"} className="w-full" onClick={addColumn}>+ Add New Column</Button>
         </div>
-        <Button type="submit" className="w-full">{board ? "Save Changes" : "Create New Board"}</Button>
+        <Button type="submit" className="w-full" disabled={isCreateBoardPending}>{board ? "Save Changes" : "Create New Board"}</Button>
     </form>
   )
 }
