@@ -4,6 +4,7 @@ import { AppDispatch } from '@/store'
 import { editBoard } from '@/store/slices/boardSlice'
 import { UpdateBoardResponse } from '@/types/responses'
 import { useMutation } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 
@@ -14,7 +15,12 @@ function useUpdateBoard() {
         onSuccess: (data: UpdateBoardResponse) => {
             dispatch(editBoard(data.board))
         },
-        onError: () => {
+        onError: (error: AxiosError) => {
+            if (error.response?.status === 404) {
+                toast.error(MESSAGES.board.alreadyDeleted)
+                return
+            }
+
             toast.error(MESSAGES.database.databaseFail)
         }
     })

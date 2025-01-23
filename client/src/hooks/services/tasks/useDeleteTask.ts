@@ -18,7 +18,7 @@ function useDeleteTask() {
         },
         onError: (error: AxiosError) => {
             if (error.response?.status === 404) {
-                toast.error(MESSAGES.board.alreadyDeleted)
+                toast.error(MESSAGES.task.alreadyDeleted)
                 return
             }
 
