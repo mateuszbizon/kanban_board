@@ -1,4 +1,4 @@
-import { Board, SubTask, Task } from "@/types"
+import { Board, Task } from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type TaskState = {
@@ -16,7 +16,7 @@ const taskSlice = createSlice({
         addTask: (state, action: PayloadAction<{ board: Board, task: Task }>) => {
             const currentBoard = action.payload.board
             const updatedBoard = { ...currentBoard, columns: currentBoard.columns.map(column => {
-                if (column.name === action.payload.task.status) {
+                if (column.id === action.payload.task.columnId) {
                     return { ...column, tasks: [...column.tasks, action.payload.task] }
                 }
 

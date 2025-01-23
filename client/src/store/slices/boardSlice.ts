@@ -8,8 +8,8 @@ type BoardState = {
 }
 
 const initialState: BoardState = {
-    boards: boardsData.boards,
-    currentBoard: boardsData.boards[0],
+    boards: [],
+    currentBoard: null,
 }
 
 const boardSlice = createSlice({

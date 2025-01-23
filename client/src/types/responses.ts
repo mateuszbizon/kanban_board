@@ -1,4 +1,4 @@
-import { Board } from "."
+import { Board, Task } from "."
 
 export type GetAllBoardsResponse = {
     boards: Board[]
@@ -14,4 +14,8 @@ export type UpdateBoardResponse = {
 
 export type DeleteBoardResponse = {
     board: Board
+}
+
+export type CreateTaskResponse = {
+    task: Task
 }
