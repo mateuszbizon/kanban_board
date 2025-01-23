@@ -4,6 +4,7 @@ import { SubTask } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
 import { handleEditSubtask } from "@/store/actions/subtasks";
+import useUpdateSubtask from "@/hooks/services/subtasks/useUpdateSubtask";
 
 type SubtaskCardProps = {
 	subtask: SubTask;
@@ -11,6 +12,7 @@ type SubtaskCardProps = {
 };
 
 function SubtaskCard({ subtask, columnId }: SubtaskCardProps) {
+    const { handleUpdateSubtask } = useUpdateSubtask()
 	const { currentBoard } = useSelector((state: RootState) => state.board);
 	const dispatch = useDispatch<AppDispatch>();
 	const [isCompleted, setIsCompleted] = useState(subtask.isCompleted);
@@ -21,6 +23,7 @@ function SubtaskCard({ subtask, columnId }: SubtaskCardProps) {
 		if (!currentBoard) return;
 
 		dispatch(handleEditSubtask(currentBoard, columnId, subtask));
+        handleUpdateSubtask(subtask.id)
 	}
 
 	return (
