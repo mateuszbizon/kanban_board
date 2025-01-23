@@ -1,9 +1,7 @@
 import React from 'react'
 import Modal from '../common/Modal'
 import { Task } from '@/types';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@/store';
-import { handleDeleteTask } from '@/store/actions/tasks';
+import useDeleteTask from '@/hooks/services/tasks/useDeleteTask';
 
 type DeleteTaskProps = {
     isDeleteTaskOpen: boolean;
@@ -13,13 +11,10 @@ type DeleteTaskProps = {
 }
 
 function DeleteTask({ isDeleteTaskOpen, setIsDeleteTaskOpen, task, closeCurrentTask }: DeleteTaskProps) {
-    const { currentBoard } = useSelector((state: RootState) => state.board)
-    const dispatch = useDispatch<AppDispatch>()
+    const { handleDeleteTask } = useDeleteTask()
 
     function handleDelete() {
-        if (!currentBoard) return
-
-        dispatch(handleDeleteTask(currentBoard, task.columnId, task.id))
+        handleDeleteTask(task.id)
 
         if (closeCurrentTask) {
             closeCurrentTask()

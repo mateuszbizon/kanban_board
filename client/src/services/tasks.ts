@@ -12,3 +12,9 @@ export async function updateTask({ task, taskId, columndId }: { task: TaskSchema
 
     return data
 }
+
+export async function deleteTask(taskId: string) {
+    const { data } = await API.delete(`/tasks/delete-task/${taskId}`)
+
+    return data
+}

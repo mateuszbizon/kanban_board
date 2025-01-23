@@ -24,3 +24,7 @@ export type UpdateTaskResponse = {
     task: Task
     oldColumnId: string
 }
+
+export type DeleteTaskResponse = {
+    task: Task
+}
