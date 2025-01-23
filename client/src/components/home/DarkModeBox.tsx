@@ -1,10 +1,10 @@
+import { useDarkModeContext } from "@/context/DarkModeContext";
 import DarkThemeIcon from "../icons/DarkThemeIcon";
 import LightThemeIcon from "../icons/LightThemeIcon";
 import { Button } from "../ui/button";
-import useDarkMode from "@/hooks/useDarkMode";
 
 function DarkModeBox() {
-	const { isDarkMode, toggleDarkMode } = useDarkMode()
+    const { isDarkMode, toggleDarkMode } = useDarkModeContext()
 
 	return (
 		<div className='px-main'>

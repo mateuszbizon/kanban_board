@@ -10,11 +10,12 @@ import TaskForm from "../forms/TaskForm";
 import { useState } from "react";
 import TopbarOptions from "./TopbarOptions";
 import LogoLightIcon from "../icons/LogoLightIcon";
+import { useDarkModeContext } from "@/context/DarkModeContext";
 
 function Topbar() {
 	const { isOpen: isSidebarOpen } = useSelector((state: RootState) => state.sidebar);
 	const { boards, currentBoard } = useSelector((state: RootState) => state.board);
-	const { isDarkMode } = useSelector((state: RootState) => state.darkMode);
+    const { isDarkMode } = useDarkModeContext()
 	const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
 
 	return (
