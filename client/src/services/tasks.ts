@@ -6,3 +6,9 @@ export async function createTask({ task, columnId }: { task: TaskSchema, columnI
 
     return data
 }
+
+export async function updateTask({ task, taskId, columndId }: { task: TaskSchema, taskId: string, columndId: string }) {
+    const { data } = await API.put(`/tasks/update-task/${taskId}/${columndId}`, task)
+
+    return data
+}

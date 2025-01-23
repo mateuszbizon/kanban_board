@@ -2,8 +2,8 @@ import { Task } from '@/types'
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '@/store';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 import { useEffect, useState } from 'react';
 import SelectDropdown from '../common/SelectDropdown';
 import { Button } from '../ui/button';
@@ -11,10 +11,9 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { taskSchema, TaskSchema } from '@/validations/taskSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CrossIcon from '../icons/CrossIcon';
-import { generateId } from '@/lib/generateId';
-import { handleEditTask } from '@/store/actions/tasks';
 import { getColumnByStatus } from '@/lib/getColumn';
 import useCreateTask from '@/hooks/services/tasks/useCreateTask';
+import useUpdateTask from '@/hooks/services/tasks/useUpdateTask';
 
 type TaskFormProps = {
     task?: Task;
@@ -22,7 +21,7 @@ type TaskFormProps = {
 
 function TaskForm({ task }: TaskFormProps) {
     const { handleCreateTask, isCreateTaskPending, isCreateTaskError } = useCreateTask()
-    const dispatch = useDispatch<AppDispatch>()
+    const { handleUpdateTask, isUpdateTaskPending } = useUpdateTask()
     const { currentBoard } = useSelector((state: RootState) => state.board)
     const [column, setColumn] = useState(task ? () => getColumnByStatus(currentBoard, task.status) : currentBoard?.columns[0])
     const { handleSubmit, register, control, reset, setValue } = useForm<TaskSchema>({
@@ -55,24 +54,8 @@ function TaskForm({ task }: TaskFormProps) {
     }
 
     function onSubmit(data: TaskSchema) { 
-        const newTaskId = generateId()
-        const subtasks = data.subtasks.map((subtask, index) => {
-            return { ...subtask, id: generateId() + index, taskId: task ? task.id : newTaskId }
-        })
-
         if (task) {
-            const editTask: Task = { 
-                ...task, 
-                title: data.title, 
-                description: data.description, 
-                status: data.status, 
-                subtasks, 
-                columnId: column?.id! 
-            
-            }
-            const oldColumnId = task.columnId
-
-            dispatch(handleEditTask(currentBoard!, editTask, oldColumnId))
+            handleUpdateTask({ task: data, taskId: task.id, columndId: column?.id! })
             return
         }
 
@@ -84,7 +67,9 @@ function TaskForm({ task }: TaskFormProps) {
     }
 
     useEffect(() => {
-        setColumn(currentBoard?.columns[0])
+        if (!task) {
+            setColumn(currentBoard?.columns[0])
+        }
     }, [currentBoard])
 
   return (
@@ -135,7 +120,13 @@ function TaskForm({ task }: TaskFormProps) {
                 </SelectDropdown>
             </div>
         )}
-        <Button type='submit' className='w-full' disabled={isCreateTaskPending}>{task ? "Save Changes" : "Create Task"}</Button>
+        <Button 
+            type='submit' 
+            className='w-full' 
+            disabled={isCreateTaskPending || isUpdateTaskPending}
+        >
+            {task ? "Save Changes" : "Create Task"}
+        </Button>
     </form>
   )
 }
