@@ -1,21 +1,31 @@
-import { Board } from "@/types";
+import { Board, Task } from "@/types";
 import BoardEmpty from "./BoardEmpty";
 import ColumnsList from "../lists/ColumnsList";
 import ColumnCard from "../cards/ColumnCard";
 import ColumnStatusCard from "../cards/ColumnStatusCard";
 import NewColumn from "./NewColumn";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store";
+import { handleEditTask } from "@/store/actions/tasks";
+import useMoveTask from "@/hooks/services/tasks/useMoveTask";
 
 type CurrentBoardProps = {
   board: Board;
 }
 
 function CurrentBoard({ board }: CurrentBoardProps) {
+    const dispatch = useDispatch<AppDispatch>()
+    const { handleMoveTask } = useMoveTask()
+
     function onDragEnd(event: DragEndEvent) {
         const { active, over } = event
 
-        if (over && active.data.current?.columnId !== over.id) {
-            console.log('Task moved to another column')
+        if (over && active.data.current && active.data.current.columnId !== over.id) {
+            const newTask = { ...active.data.current, columnId: over.id as string } as Task
+
+            dispatch(handleEditTask(board, newTask, active.data.current.columnId))
+            handleMoveTask({ taskId: active.id as string, newColumnId: over.id as string })
         }
     }
 

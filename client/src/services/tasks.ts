@@ -18,3 +18,9 @@ export async function deleteTask(taskId: string) {
 
     return data
 }
+
+export async function moveTask({ taskId, newColumnId }: { taskId: string, newColumnId: string }) {
+    const { data } = await API.patch(`/tasks/move-task/${taskId}/${newColumnId}`)
+
+    return data
+}

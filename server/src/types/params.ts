@@ -22,3 +22,8 @@ export type DeleteTaskParams = {
 export type UpdateSubtaskParams = {
     subtaskId: string;
 }
+
+export type MoveTaskParams = {
+    taskId: string;
+    newColumnId: string;
+}

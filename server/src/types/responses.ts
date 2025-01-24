@@ -32,3 +32,8 @@ export type DeleteTaskResponse = {
 export type UpdateSubtaskResponse = {
     subtask: Subtask
 }
+
+export type MoveTaskResponse = {
+    task: Task
+    oldColumnId: string
+}
