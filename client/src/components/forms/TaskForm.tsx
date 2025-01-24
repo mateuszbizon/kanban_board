@@ -24,7 +24,7 @@ function TaskForm({ task }: TaskFormProps) {
     const { handleUpdateTask, isUpdateTaskPending } = useUpdateTask()
     const { currentBoard } = useSelector((state: RootState) => state.board)
     const [column, setColumn] = useState(task ? () => getColumnByStatus(currentBoard, task.status) : currentBoard?.columns[0])
-    const { handleSubmit, register, control, reset, setValue } = useForm<TaskSchema>({
+    const { handleSubmit, register, control, reset, setValue, formState: { errors } } = useForm<TaskSchema>({
         resolver: zodResolver(taskSchema),
         defaultValues: {
             title: task ? task.title : "",
@@ -77,7 +77,12 @@ function TaskForm({ task }: TaskFormProps) {
         <h2 className='form-title'>{task ? "Edit Task" : "Add New Task"}</h2>
         <div className='space-y-2'>
             <Label htmlFor='title'>Title</Label>
-            <Input id='title' {...register("title")} placeholder='e.g. Take coffee break' />
+            <Input 
+                id='title' 
+                {...register("title")} 
+                placeholder='e.g. Take coffee break' 
+                errorMessage={errors.title && errors.title.message} 
+            />
         </div>
         <div className='space-y-2'>
             <Label htmlFor='description'>Description</Label>
@@ -93,7 +98,11 @@ function TaskForm({ task }: TaskFormProps) {
             {fields.map((item, index) => {
                 return (
                     <div key={item.id} className='flex items-center gap-1'>
-                        <Input {...register(`subtasks.${index}.title`)} placeholder='Make coffee' />
+                        <Input 
+                            {...register(`subtasks.${index}.title`)} 
+                            placeholder='Make coffee' 
+                            errorMessage={errors.subtasks?.[index]?.title && errors.subtasks[index].title.message}
+                        />
                         <Button 
                             type="button" 
                             variant={"transparent"} 

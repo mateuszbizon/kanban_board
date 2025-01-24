@@ -63,14 +63,18 @@ function BoardForm({ board }: BoardFormProps) {
         <h2 className="form-title">{board ? "Edit Board" : "Add New Board"}</h2>
         <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
-            <Input id="name" {...register("name")} placeholder="e.g. Web Design" />
+            <Input id="name" {...register("name")} placeholder="e.g. Web Design" errorMessage={errors.name && errors.name.message} />
         </div>
         <div className="space-y-2">
             <Label>Columns</Label>
             {fields.map((item, index) => {
                 return (
                     <div key={item.id} className="flex items-center gap-1">
-                        <Input {...register(`columns.${index}.name`)} placeholder="e.g. Todo" />
+                        <Input 
+                            {...register(`columns.${index}.name`)} 
+                            placeholder="e.g. Todo" 
+                            errorMessage={errors.columns?.[index]?.name && errors.columns[index].name.message} 
+                        />
                         <Button 
                             type="button" 
                             variant={"transparent"} 
