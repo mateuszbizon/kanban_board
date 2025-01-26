@@ -1,5 +1,4 @@
 import { Board } from "@/types";
-import boardsData from "@/data/boards.json";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type BoardState = {
