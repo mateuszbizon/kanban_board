@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 
 function useCreateBoard() {
     const dispatch = useDispatch<AppDispatch>()
-    const { mutate: handleCreateBoard, isPending: isCreateBoardPending, isError: isCreateBoardError } = useMutation({
+    const { mutate: handleCreateBoard, isPending: isCreateBoardPending } = useMutation({
         mutationFn: createBoard,
         onSuccess: (data: CreateBoardResponse) => {
             dispatch(addBoard(data.board))
@@ -22,7 +22,6 @@ function useCreateBoard() {
   return {
     handleCreateBoard,
     isCreateBoardPending,
-    isCreateBoardError,
   }
 }
 

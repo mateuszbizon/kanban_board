@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 function useCreateTask() {
     const dispatch = useDispatch<AppDispatch>()
     const { currentBoard } = useSelector((state: RootState) => state.board)
-    const { mutate: handleCreateTask, isPending: isCreateTaskPending, isError: isCreateTaskError } = useMutation({
+    const { mutate: handleCreateTask, isPending: isCreateTaskPending } = useMutation({
         mutationFn: createTask,
         onSuccess: (data: CreateTaskResponse) => {
             dispatch(handleAddTask(currentBoard!, data.task))
@@ -23,7 +23,6 @@ function useCreateTask() {
   return {
     handleCreateTask,
     isCreateTaskPending,
-    isCreateTaskError,
   }
 }
 

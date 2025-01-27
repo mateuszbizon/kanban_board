@@ -20,7 +20,7 @@ type TaskFormProps = {
 }
 
 function TaskForm({ task }: TaskFormProps) {
-    const { handleCreateTask, isCreateTaskPending, isCreateTaskError } = useCreateTask()
+    const { handleCreateTask, isCreateTaskPending } = useCreateTask()
     const { handleUpdateTask, isUpdateTaskPending } = useUpdateTask()
     const { currentBoard } = useSelector((state: RootState) => state.board)
     const [column, setColumn] = useState(task ? () => getColumnByStatus(currentBoard, task.status) : currentBoard?.columns[0])
@@ -59,11 +59,11 @@ function TaskForm({ task }: TaskFormProps) {
             return
         }
 
-        handleCreateTask({ task: data, columnId: column?.id! })
-
-        if (!isCreateTaskError) {
-            reset()
-        }
+        handleCreateTask({ task: data, columnId: column?.id! }, {
+            onSuccess: () => {
+                reset()
+            }
+        })
     }
 
     useEffect(() => {

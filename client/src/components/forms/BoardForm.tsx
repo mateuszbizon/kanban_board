@@ -15,7 +15,7 @@ type BoardFormProps = {
 }
 
 function BoardForm({ board }: BoardFormProps) {
-    const { handleCreateBoard, isCreateBoardPending, isCreateBoardError } = useCreateBoard()
+    const { handleCreateBoard, isCreateBoardPending } = useCreateBoard()
     const { handleUpdateBoard, isUpdateBoardPending } = useUpdateBoard()
     const { handleSubmit, register, formState: { errors }, control, reset, setValue } = useForm<BoardSchema>({
         resolver: zodResolver(boardSchema),
@@ -44,11 +44,11 @@ function BoardForm({ board }: BoardFormProps) {
             return
         }
 
-        handleCreateBoard(data)
-        
-        if (!isCreateBoardError) {
-            reset()
-        }
+        handleCreateBoard(data, {
+            onSuccess: () => {
+                reset()
+            }
+        })
     }
 
     useEffect(() => {
