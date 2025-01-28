@@ -30,7 +30,7 @@ function useModal({ isOpen, onClose, onDelete, modalRef }: Props) {
         }
 
         closeModal()
-    }, [isOpen, modalRef.current?.open])
+    }, [isOpen])
 
     useEffect(() => {
         const closeModalOutside = (e: MouseEvent) => {

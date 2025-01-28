@@ -15,7 +15,7 @@ function EditBoard({ isEditBoardOpen, setIsEditBoardOpen }: EditBoardProps) {
   return (
     <div>
         <Modal isOpen={isEditBoardOpen} onClose={() => setIsEditBoardOpen(false)} isModalDelete={false}>
-            <BoardForm board={currentBoard} />
+            <BoardForm board={currentBoard} onCloseModal={() => setIsEditBoardOpen(false)} />
         </Modal>
     </div>
   )

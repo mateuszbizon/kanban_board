@@ -14,8 +14,11 @@ function DeleteBoard({ isDeleteBoardOpen, setIsDeleteBoardOpen }: DeleteBoardPro
     const { currentBoard } = useSelector((state: RootState) => state.board)
 
     function onDeleteBoard() {
-        handleDeleteBoard(currentBoard?.id!)
-        setIsDeleteBoardOpen(false)
+        handleDeleteBoard(currentBoard?.id!, {
+            onSettled: () => {
+                setIsDeleteBoardOpen(false)
+            }
+        })
     }
 
   return (

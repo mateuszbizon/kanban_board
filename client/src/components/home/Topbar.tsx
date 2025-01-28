@@ -55,7 +55,7 @@ function Topbar() {
 							isOpen={isNewTaskOpen}
 							onClose={() => setIsNewTaskOpen(false)}
 							isModalDelete={false}>
-							<TaskForm />
+							<TaskForm onCloseModal={() => setIsNewTaskOpen(false)} />
 						</Modal>
 					)}
 					<BoardOptions />

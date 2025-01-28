@@ -58,7 +58,7 @@ function TopbarOptions() {
                         </Button>
                     </div>
                     <Modal isOpen={isBoardModalOpen} onClose={() => setIsBoardModalOpen(false)} isModalDelete={false}>
-                        <BoardForm />
+                        <BoardForm onCloseModal={() => setIsBoardModalOpen(false)} />
                     </Modal>
                 </div>
                 <DarkModeBox />

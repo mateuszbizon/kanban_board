@@ -12,7 +12,7 @@ function EditTask({ isEditTaskOpen, setIsEditTaskOpen, task }: EditTaskProps) {
   return (
     <div>
         <Modal isOpen={isEditTaskOpen} onClose={() => setIsEditTaskOpen(false)} isModalDelete={false}>
-            <TaskForm task={task} />
+            <TaskForm task={task} onCloseModal={() => setIsEditTaskOpen(false)} />
         </Modal>
     </div>
   )

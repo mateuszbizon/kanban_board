@@ -47,7 +47,7 @@ function Sidebar() {
 						isOpen={isBoardModalOpen}
 						onClose={() => setIsBoardModalOpen(false)}
 						isModalDelete={false}>
-						<BoardForm />
+						<BoardForm onCloseModal={() => setIsBoardModalOpen(false)} />
 					</Modal>
 				</div>
 

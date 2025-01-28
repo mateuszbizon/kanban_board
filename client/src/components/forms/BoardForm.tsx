@@ -12,9 +12,10 @@ import useUpdateBoard from "@/hooks/services/boards/useUpdateBoard"
 
 type BoardFormProps = {
     board?: Board | null;
+    onCloseModal?: () => void;
 }
 
-function BoardForm({ board }: BoardFormProps) {
+function BoardForm({ board, onCloseModal }: BoardFormProps) {
     const { handleCreateBoard, isCreateBoardPending } = useCreateBoard()
     const { handleUpdateBoard, isUpdateBoardPending } = useUpdateBoard()
     const { handleSubmit, register, formState: { errors }, control, reset, setValue } = useForm<BoardSchema>({
@@ -47,8 +48,14 @@ function BoardForm({ board }: BoardFormProps) {
         handleCreateBoard(data, {
             onSuccess: () => {
                 reset()
+            },
+            onSettled: () => {
+                if (onCloseModal) {
+                    onCloseModal()
+                }
             }
         })
+
     }
 
     useEffect(() => {

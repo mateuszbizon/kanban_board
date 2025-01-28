@@ -14,11 +14,14 @@ function DeleteTask({ isDeleteTaskOpen, setIsDeleteTaskOpen, task, closeCurrentT
     const { handleDeleteTask } = useDeleteTask()
 
     function handleDelete() {
-        handleDeleteTask(task.id)
+        handleDeleteTask(task.id, {
+            onSettled: () => {
+                if (closeCurrentTask) {
+                    closeCurrentTask()
+                }
+            }
+        })
 
-        if (closeCurrentTask) {
-            closeCurrentTask()
-        }
     }
 
   return (

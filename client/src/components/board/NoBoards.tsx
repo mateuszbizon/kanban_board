@@ -13,7 +13,7 @@ function NoBoards() {
             <Button onClick={() => setIsCreateBoardOpen(true)}>+ Add New Board</Button>
         </div>
         <Modal isOpen={isCreateBoardOpen} onClose={() => setIsCreateBoardOpen(false)} isModalDelete={false}>
-            <BoardForm />
+            <BoardForm onCloseModal={() => setIsCreateBoardOpen(false)} />
         </Modal>
     </div>
   )

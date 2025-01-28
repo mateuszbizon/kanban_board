@@ -17,9 +17,10 @@ import useUpdateTask from '@/hooks/services/tasks/useUpdateTask';
 
 type TaskFormProps = {
     task?: Task;
+    onCloseModal?: () => void;
 }
 
-function TaskForm({ task }: TaskFormProps) {
+function TaskForm({ task, onCloseModal }: TaskFormProps) {
     const { handleCreateTask, isCreateTaskPending } = useCreateTask()
     const { handleUpdateTask, isUpdateTaskPending } = useUpdateTask()
     const { currentBoard } = useSelector((state: RootState) => state.board)
@@ -62,6 +63,11 @@ function TaskForm({ task }: TaskFormProps) {
         handleCreateTask({ task: data, columnId: column?.id! }, {
             onSuccess: () => {
                 reset()
+            },
+            onSettled: () => {
+                if (onCloseModal) {
+                    onCloseModal()
+                }
             }
         })
     }
