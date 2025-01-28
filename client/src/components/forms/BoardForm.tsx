@@ -41,7 +41,13 @@ function BoardForm({ board, onCloseModal }: BoardFormProps) {
 
     function onSubmit(data: BoardSchema) {
         if (board) {
-            handleUpdateBoard({ board: data, boardId: board.id })
+            handleUpdateBoard({ board: data, boardId: board.id }, {
+                onSettled: () => {
+                    if (onCloseModal) {
+                        onCloseModal()
+                    }
+                }
+            })
             return
         }
 

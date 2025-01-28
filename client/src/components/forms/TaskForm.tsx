@@ -56,7 +56,13 @@ function TaskForm({ task, onCloseModal }: TaskFormProps) {
 
     function onSubmit(data: TaskSchema) { 
         if (task) {
-            handleUpdateTask({ task: data, taskId: task.id, columndId: column?.id! })
+            handleUpdateTask({ task: data, taskId: task.id, columndId: column?.id! }, {
+                onSettled: () => {
+                    if (onCloseModal) {
+                        onCloseModal()
+                    }
+                }
+            })
             return
         }
 
