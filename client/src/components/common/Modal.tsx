@@ -10,12 +10,14 @@ type ModalProps = {
 } & ({
   isModalDelete: true;
   onDelete: () => void;
+  isPending: boolean;
 } | {
   isModalDelete: false;
-  onDelete?: undefined
+  onDelete?: undefined;
+  isPending?: undefined;
 })
 
-function Modal({ isOpen, onClose, children, isModalDelete, onDelete }: ModalProps) {
+function Modal({ isOpen, onClose, children, isModalDelete, onDelete, isPending }: ModalProps) {
     const modalRef = useRef<HTMLDialogElement | null>(null)
     const { closeModal, handleDelete } = useModal({ isOpen, onClose, onDelete, modalRef })
 
@@ -30,7 +32,7 @@ function Modal({ isOpen, onClose, children, isModalDelete, onDelete }: ModalProp
             <div>
                 {children}
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2 mt-5">
-                    <Button variant={"delete"} onClick={handleDelete}>Delete</Button>
+                    <Button variant={"delete"} onClick={handleDelete} disabled={isPending}>Delete</Button>
                     <Button variant={"secondary"} onClick={closeModal}>Cancel</Button>
                 </div>
             </div>

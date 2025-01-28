@@ -10,7 +10,7 @@ type DeleteBoardProps = {
 }
 
 function DeleteBoard({ isDeleteBoardOpen, setIsDeleteBoardOpen }: DeleteBoardProps) {
-    const { handleDeleteBoard } = useDeleteBoard()
+    const { handleDeleteBoard, isPending } = useDeleteBoard()
     const { currentBoard } = useSelector((state: RootState) => state.board)
 
     function onDeleteBoard() {
@@ -23,7 +23,7 @@ function DeleteBoard({ isDeleteBoardOpen, setIsDeleteBoardOpen }: DeleteBoardPro
 
   return (
     <div>
-        <Modal isOpen={isDeleteBoardOpen} onClose={() => setIsDeleteBoardOpen(false)} isModalDelete={true} onDelete={onDeleteBoard}>
+        <Modal isOpen={isDeleteBoardOpen} onClose={() => setIsDeleteBoardOpen(false)} isModalDelete={true} onDelete={onDeleteBoard} isPending={isPending}>
             <div className='space-y-5'>
                 <span className='text-red text-lg'>Delete this board?</span>
                 <p className='text-medium-grey text-2xs'>Are you sure you want to delete the ‘{currentBoard?.name}’ board? This action will remove all columns and tasks and cannot be reversed.</p>

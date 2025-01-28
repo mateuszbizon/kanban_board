@@ -11,7 +11,7 @@ type DeleteTaskProps = {
 }
 
 function DeleteTask({ isDeleteTaskOpen, setIsDeleteTaskOpen, task, closeCurrentTask }: DeleteTaskProps) {
-    const { handleDeleteTask } = useDeleteTask()
+    const { handleDeleteTask, isPending } = useDeleteTask()
 
     function handleDelete() {
         handleDeleteTask(task.id, {
@@ -26,7 +26,7 @@ function DeleteTask({ isDeleteTaskOpen, setIsDeleteTaskOpen, task, closeCurrentT
 
   return (
     <div>
-        <Modal isOpen={isDeleteTaskOpen} onClose={() => setIsDeleteTaskOpen(false)} isModalDelete={true} onDelete={handleDelete}>
+        <Modal isOpen={isDeleteTaskOpen} onClose={() => setIsDeleteTaskOpen(false)} isModalDelete={true} onDelete={handleDelete} isPending={isPending}>
             <div className='space-y-5'>
                 <span className='text-red text-lg'>Delete this task?</span>
                 <p className='text-medium-grey text-2xs'>Are you sure you want to delete the ‘{task.title}’ task and its subtasks? This action cannot be reversed.</p>
